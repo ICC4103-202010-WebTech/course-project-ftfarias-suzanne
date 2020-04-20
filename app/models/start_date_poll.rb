@@ -1,0 +1,2 @@
+class StartDatePoll < ApplicationRecord
+end
