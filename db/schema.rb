@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_064607) do
+ActiveRecord::Schema.define(version: 2020_04_20_233110) do
 
   create_table "comments", force: :cascade do |t|
     t.string "message"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_064607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "username"
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
@@ -142,13 +143,12 @@ ActiveRecord::Schema.define(version: 2020_04_20_064607) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.datetime "votedate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "start_date_poll_id"
     t.integer "event_guest_id"
+    t.integer "start_date_option_id"
     t.index ["event_guest_id"], name: "index_votes_on_event_guest_id"
-    t.index ["start_date_poll_id"], name: "index_votes_on_start_date_poll_id"
+    t.index ["start_date_option_id"], name: "index_votes_on_start_date_option_id"
   end
 
   add_foreign_key "comments", "event_guests"
@@ -171,5 +171,5 @@ ActiveRecord::Schema.define(version: 2020_04_20_064607) do
   add_foreign_key "user_profiles", "users"
   add_foreign_key "users", "organizations"
   add_foreign_key "votes", "event_guests"
-  add_foreign_key "votes", "start_date_polls"
+  add_foreign_key "votes", "start_date_options"
 end

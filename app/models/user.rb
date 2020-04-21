@@ -6,9 +6,17 @@ class User < ApplicationRecord
   has_one :mailbox, dependent: :destroy
   has_many :events
   has_one :organization
-  has_many :invitations, through: :mailbox
-  has_many :event_guests ,through: :invitations, dependent: :destroy
+  has_many :invitations
+  has_many :event_guests, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true , format: {with:/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+
+  after_create :create_mailbox
+
+  private
+  #Function to create the user mailbox automatically
+  def create_mailbox
+    Mailbox.create(user_id: self.id)
+  end
 
 end
