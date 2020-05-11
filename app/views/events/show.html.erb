@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<body>
+
+<header>
+  <h2>
+    <%= @event.name%>
+  </h2>
+</header>
+
+<main>
+  <section>
+    <p> <%= @event.picture %></p>
+    <p> <%= @event.description %></p>
+    <p> <%= @event.location %></p>
+  </section>
+
+  <section>
+    <h4> Event Guests</h4>
+    <% @event.event_guests.each do |guest| %>
+    <p> <%= guest.user.user_profile.username  %></p>
+    <% end %>
+  </section>
+
+  <section>
+    <h4> Comments</h4>
+    <% @event_comments.each do |comment|%>
+      <% @replies = comment.replies %>
+      <p> <%= comment.event_guest.user.user_profile.username%>: <%= comment.message %></p>
+        <% @replies.each do |reply| %>
+        <p> <%= reply.message %></p>
+      <% end %>
+    <% end %>
+  </section>
+</main>
+
+</body>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<header>
+  <h2>
+    <%= @user_profile.username %>
+  </h2>
+</header>
+
+<body>
+  <main>
+    <p>Full name: <%= @user_profile.name%>  <%=@user_profile.lastname%></p>
+    <p>Bio: <%= @user_profile.bio %></p>
+    <p>Phone: <%= @user_profile.phone %> </p>
+    <p>Address: <%= @user_profile.address %></p>
+  </main>
+
+  <aside>
+      <%= image_tag("teemologo.jpg", :alt =>  "Teemo")%>
+  </aside>
+</body>
+

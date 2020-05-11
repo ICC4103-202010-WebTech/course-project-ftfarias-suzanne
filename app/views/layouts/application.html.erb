@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>CourseProjectFtfariasSuzanne</title>
+    <title>CourseProjectFtfariasSizanni</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,42 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+    <h1>
+      <%= link_to "Teemo Events", root_path %>
+    </h1>
+    <p>
+      <%= image_tag("teemologo.jpg", :alt =>  "Teemo")%>
+    </p>
+  </header>
+
+  <nav>
+    <ul id="navbar">
+      <li><a href="/events">Events</a> </li>
+      <li><a href="/organizations">Organizations</a> </li>
+      <li><a href="/user_profiles/1">Your Profile</a> </li>
+      <li><a href="/mailboxes/1">Mailbox</a> </li>
+    </ul>
+
+  </nav>
+
+  <div>
+    <aside>
+      <p>Welcome, <%=@userProfile.username %></p>
+    </aside>
+    <main>
+      <%= yield %>
+    </main>
+  </div>
+
+  <%= link_to "Home", root_path %>
   </body>
+
+  <footer>
+    <h4>Contact Information</h4>
+    <p>teemoevents@gmail.com</p>
+  </footer>
+
+  <%= link_to "Logout", "/logout"  %>
+
 </html>

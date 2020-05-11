@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Organization Administrators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organization_administrators.each do |organization_administrator| %>
+      <tr>
+        <td><%= link_to 'Show', organization_administrator %></td>
+        <td><%= link_to 'Edit', edit_organization_administrator_path(organization_administrator) %></td>
+        <td><%= link_to 'Destroy', organization_administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Organization Administrator', new_organization_administrator_path %>

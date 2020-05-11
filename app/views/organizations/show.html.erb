@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<body>
+
+<header>
+  <h2>
+    <%= @organization.name%>
+  </h2>
+</header>
+
+<main>
+  <section>
+    <p> <%= @organization.bannerpicture %></p>
+  </section>
+
+  <section>
+    <p> <%= @organization.picture %></p>
+    <p> <%= @organization.description %></p>
+  </section>
+
+  <aside>
+    <h4> <%= @organization.name %> Members</h4>
+    <% @members.each do |member|%>
+    <p> <%= link_to member.user_profile.username , member.user_profile %></p>
+    <% end %>
+  </aside>
+
+  <section>
+    <h4> <%= @organization.name %> Members</h4>
+    <% @organization_events.each do |event|%>
+    <p> <%= link_to event.name, event %></p>
+
+    <% end %>
+  </section>
+</main>
+
+</body>
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>

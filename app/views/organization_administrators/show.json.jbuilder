@@ -1,0 +1,1 @@
+json.partial! "organization_administrators/organization_administrator", organization_administrator: @organization_administrator

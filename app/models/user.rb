@@ -19,4 +19,10 @@ class User < ApplicationRecord
     Mailbox.create(user_id: self.id)
   end
 
+  def self.search(search)
+    if search
+      
+    end
+  end
+
 end

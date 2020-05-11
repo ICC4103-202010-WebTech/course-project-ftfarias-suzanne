@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<html>
+
+<head>
+  <title>CourseProjectFtfariasSizanni</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<header>
+  <h1>
+    Teemo Events
+  </h1>
+  <p>
+    <%= image_tag("teemologo.jpg", :alt =>  "Teemo")%>
+  </p>
+</header>
+
+<aside>
+  <h2> Enter your credentials to access the best events site in the web!</h2>
+</aside>
+
+<main>
+  <label for="Email">Email/Username:</label>
+  <input type="text" id="Email" name="Email"><br><br>
+  <label for="Password">Last name:</label>
+  <input type="text" id="Password" name="Password"><br><br>
+  <%= link_to "Login" , "/"%>
+</main>
+
+</body>
+
+
+</html>
+
+
