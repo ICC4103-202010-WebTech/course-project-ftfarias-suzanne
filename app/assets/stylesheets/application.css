@@ -13,3 +13,115 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: snow;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orangered;
+}
+
+header#application {
+    position: static;
+    padding: 1em;
+    height: 100px;
+    background: url("headerbackground.jpg");
+    background-size: contain;
+}
+
+header#application h1{
+    display: block;
+    color: snow;
+    text-align: center;
+    text-decoration: underline;
+}
+
+header#application h1 picture{
+    position: relative;
+    padding: 0.5em;
+}
+
+div#container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+}
+
+aside#customer_info {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 1em;
+}
+
+footer {
+    color: white;
+    background: #333;
+    padding: 1em;
+    height: 6em;
+}
+
+ul#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul#navbar li {
+    float: left;
+}
+
+ul#navbar li a {
+    display: block ;
+    color: snow;
+    text-align: left;
+    padding: 1em;
+    text-decoration: none;
+}
+
+
+ul#navbar li#data {
+    float: right;
+}
+
+ul#navbar li#data a {
+    display: block ;
+    color: snow;
+    text-align: left;
+    padding: 1em;
+    text-decoration: none;
+}
+
+ul#navbar li#data i{
+    display: block;
+    text-align: left;
+    padding: 10px 0.1px;
+}
+
+/* Change the link color to #111 (black) on hover */
+ul#navbar li a:hover {
+    background-color: #111;
+}
+
+
+td,th {
+    padding: 0.2em;
+    text-align: left;
+}

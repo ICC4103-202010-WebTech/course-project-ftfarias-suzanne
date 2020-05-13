@@ -11,13 +11,13 @@
   </head>
 
   <body>
-  <header>
+  <header id="application">
     <h1>
-      <%= link_to "Teemo Events", root_path %>
+      Teemo Events
+
     </h1>
-    <p>
-      <%= image_tag("teemologo.jpg", :alt =>  "Teemo")%>
-    </p>
+
+
   </header>
 
   <nav>
@@ -26,14 +26,15 @@
       <li><a href="/organizations">Organizations</a> </li>
       <li><a href="/user_profiles/1">Your Profile</a> </li>
       <li><a href="/mailboxes/1">Mailbox</a> </li>
+      <li id="data"><%= link_to "Logout", "/logout"  %></li>
+      <li id="data"><%= link_to @userProfile.username , "/user_profiles/1"%></li>
+      <li id="data"><i><%= image_tag("usericon.png", :alt => "usericon", :width => 25, :height => 25) %></i> </li>
     </ul>
 
   </nav>
 
   <div>
-    <aside>
-      <p>Welcome, <%=@userProfile.username %></p>
-    </aside>
+
     <main>
       <%= yield %>
     </main>
@@ -47,6 +48,6 @@
     <p>teemoevents@gmail.com</p>
   </footer>
 
-  <%= link_to "Logout", "/logout"  %>
+
 
 </html>

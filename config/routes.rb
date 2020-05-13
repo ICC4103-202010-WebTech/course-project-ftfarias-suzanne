@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :events
+      resources :events , shallow: true do
+        resources :comments
       end
+      resources :comments
     end
-
+  end
 
 
   resources :users, defaults: { format: :html}
