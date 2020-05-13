@@ -1,21 +1,53 @@
-<p id="notice"><%= notice %></p>
 
-<header>
+<header id="user_profile">
   <h2>
-    <%= @user_profile.username %>
+    <%= @user_profile.name%>  <%=@user_profile.lastname%>
   </h2>
 </header>
 
-<body>
-  <main>
-    <p>Full name: <%= @user_profile.name%>  <%=@user_profile.lastname%></p>
-    <p>Bio: <%= @user_profile.bio %></p>
-    <p>Phone: <%= @user_profile.phone %> </p>
-    <p>Address: <%= @user_profile.address %></p>
-  </main>
 
-  <aside>
-      <%= image_tag("teemologo.jpg", :alt =>  "Teemo")%>
-  </aside>
-</body>
+<div id="user_profile">
+      <img id="profilepicture" <%= image_tag("teemologo.jpg", :alt =>  "Teemo", :width => 200,:height => 150)%>
+
+
+
+      <div id="user_bio">
+        <h3><i><%=image_tag("infoicon.png",:alt => "users", :width => 30,:height => 25) %></i>Bio  </h3>
+        <section>
+          <p><%= @user_profile.bio %> </p>
+        </section>
+      </div>
+
+
+   <div id="user_info">
+      <p><%=image_tag("blackuser.png",:alt => "users", :width => 35 ,:height => 30) %><%= @user_profile.username %></p>
+      <p><%=image_tag("location.png",:alt => "users", :width => 25,:height => 25) %><%= @user_profile.address %> </p>
+      <button class="button"><%=link_to "Edit Profile", edit_user_profile_path %></button>
+    </div>
+
+      <div id="user_relations">
+
+        <div id="user_events">
+          <h3><%= @user_profile.username %> Events</h3>
+          <ul>
+            <% @user_events.each do |event| %>
+              <li><%= link_to event.name , event %> </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div id="user_organizations">
+          <h3><%= @user_profile.username %> Organizations</h3>
+          <ul>
+            <% @user_organizations.each do |organization| %>
+              <li><%= link_to organization.name , organization %> </li>
+            <% end %>
+          </ul>
+
+        </div>
+
+      </div>
+
+</div>
+
 

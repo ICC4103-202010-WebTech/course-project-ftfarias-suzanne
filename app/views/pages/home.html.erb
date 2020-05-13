@@ -1,9 +1,5 @@
-<head>
-  <%= stylesheet_link_tag 'pages', media: 'all', 'data-turbolinks-track': 'reload' %>
-</head>
 
 
-<body>
 <div class="center-div">
     <section id="events">
       <h3>Your Upcoming Events</h3>
@@ -13,7 +9,8 @@
         <div class>
           <h4><%= upcoming_event.name %></h4>
           <p> Description: <%= upcoming_event.description%></p>
-          <button> <%= link_to "See event" , upcoming_event%></button>
+          <p> <i><%=image_tag("location.png",:alt => "Location", :width => 15,:height => 20) %></i><%=upcoming_event.location %></p>
+          <button class="button"> <%= link_to "See event" , upcoming_event%></button>
         </div>
       <% end %>
     </section>
@@ -23,11 +20,10 @@
       <% @user_organizations.each do |organization| %>
         <div>
           <h4><%=  link_to organization.name , organization%></h4>
-          <p><%= organization.description%></p>
-
+          <p>Description: <%= organization.description%></p>
+          <p> <i><%=image_tag("multiple-users-silhouette.png",:alt => "users", :width => 30,:height => 25) %></i><%= organization.users.count %></p>
+          <button class="button"> <%= link_to "See organization" , organization%></button>
         </div>
       <% end %>
-
     </section>
-  </div>
-</body>
+</div>

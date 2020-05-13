@@ -19,7 +19,11 @@ html, body {
     width: 100%;
     padding: 0;
     margin: 0;
-    background-color: snow;
+    background: url("white-paper-texture-4k-white-crumpled-paper-macro-white-paper.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 body {
@@ -38,11 +42,16 @@ a:hover {
 }
 
 header#application {
-    position: static;
-    padding: 1em;
+    display: inline-table;
+    position: sticky;
+    padding: 0.2em;
     height: 100px;
-    background: url("headerbackground.jpg");
-    background-size: contain;
+    font-size: 20px;
+    background: url("headerbackground.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 header#application h1{
@@ -50,6 +59,16 @@ header#application h1{
     color: snow;
     text-align: center;
     text-decoration: underline;
+    margin: 0.4%;
+
+}
+
+header#application div input{
+    height: 20px;
+    width: 175px;
+    position: relative;
+    left: -25px;
+    text-align: center;
 }
 
 header#application h1 picture{
@@ -70,10 +89,14 @@ aside#customer_info {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     color: white;
     background: #333;
-    padding: 1em;
     height: 6em;
+    padding: 0em;
+    text-align: center;
 }
 
 ul#navbar {
@@ -125,3 +148,167 @@ td,th {
     padding: 0.2em;
     text-align: left;
 }
+
+
+div section {
+    float: left;
+}
+
+.center-div {
+    position: relative;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 43%;
+}
+
+section#events {
+
+}
+
+section#events h3{
+    text-align: center;
+    text-decoration: underline;
+    padding: 1em;
+    color: #111111;
+}
+
+section#events div {
+    text-align: center;
+    background: papayawhip;
+    padding: 1em;
+    border: solid;
+    box-sizing: inherit;
+    margin: 0px 0px 25px 0px;
+}
+
+section#events div p i {
+    padding: 0.2em;
+}
+
+section#events div h4 {
+    text-decoration: underline;
+    font-size: 20px;
+
+}
+
+section#organizations {
+    padding: 1em;
+}
+
+section#organizations h3{
+    text-align: center;
+    text-decoration: underline;
+    padding: 1em;
+    color: #111111;
+}
+
+section#organizations div {
+    text-align: center;
+    background: papayawhip;
+    padding: 1em;
+    border: solid;
+    box-sizing: inherit;
+    margin: 0px 0px 25px 0px;
+}
+
+section#organizations div h4 {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+section#organizations div p i {
+    padding: 0.5em;
+    vertical-align: bottom;
+}
+
+.button {
+    border: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 10px 10px;
+    display: inline-block;
+    font-size: 15px;
+}
+
+
+header#user_profile{
+    text-align: center;
+    left: 25px;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+div#user_profile {
+    width: 30%;
+    margin: auto;
+}
+
+div#user_profile img#profilepicture{
+    border: ridge dodgerblue;
+    position: relative;
+    left: -15px;
+}
+
+div#user_profile div#user_bio{
+    float: right;
+    width: 60%;
+ }
+div#user_profile div#user_bio img{
+    padding: 1px;
+}
+
+div#user_profile div#user_bio section{
+    box-sizing: content-box;
+    width: 300px;
+    height: 100px;
+    padding: 15px;
+    border: 3px solid dodgerblue;
+    text-align: left;
+    vertical-align: top;
+}
+div#user_profile div#user_info{
+    padding: 1px;
+    display: inline;
+}
+div#user_profile div#user_relations{
+    float: right;
+    position: relative;
+    left: 275px;
+    top: -175px;
+}
+
+div#user_relations div#user_events{
+    border: solid dodgerblue;
+    background: papayawhip;
+}
+
+
+div#user_profile  ul a{
+    list-style-type: circle;
+}
+
+div#user_profile h3{
+    text-decoration: underline;
+    text-align: center;
+
+}
+
+div#user_relations div#user_organizations{
+    border: solid dodgerblue;
+    background: papayawhip;
+    margin:35px 0px 0px 0px;
+
+}
+
+.box{
+    margin-left:auto;
+    margin-right:auto;
+    width:125px;
+    height: 26px;
+}
+
+
+

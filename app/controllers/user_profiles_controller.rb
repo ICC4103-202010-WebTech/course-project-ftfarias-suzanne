@@ -10,6 +10,8 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
+    @user_events= Event.joins(event_guests: :user).where(users: {id: 1})
+    @user_organizations = Organization.joins(:users).where(users: {id: 1})
   end
 
   # GET /user_profiles/new
