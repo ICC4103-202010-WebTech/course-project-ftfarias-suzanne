@@ -12,25 +12,22 @@
 </head>
 
 <body>
-<header>
+<header id="application">
   <h1>
     Teemo Events
   </h1>
-  <p>
-    <%= image_tag("teemologo.jpg", :alt =>  "Teemo")%>
-  </p>
 </header>
 
-<aside>
+<aside id="logout">
   <h2> Enter your credentials to access the best events site in the web!</h2>
 </aside>
 
-<main>
+<main id="logout">
   <label for="Email">Email/Username:</label>
   <input type="text" id="Email" name="Email"><br><br>
   <label for="Password">Last name:</label>
   <input type="text" id="Password" name="Password"><br><br>
-  <%= link_to "Login" , "/"%>
+  <button class="button"> <%= link_to "Login" , root_path%></button>
 </main>
 
 </body>

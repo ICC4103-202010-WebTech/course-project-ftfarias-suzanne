@@ -1,35 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<body>
-<header>
-  <h2>
-    <%= @event.name%>
-  </h2>
-</header>
 
-<main>
-  <section>
-    <p> <%= @event.picture %></p>
+<h2 id="event">
+  <%= @event.name%>
+</h2>
+
+<div id="img">
+  <p> <%= @event.picture %></p>
+</div>
+
+<div id="event_desc">
+  <h4 id="ev_description_title">Description:</h4>
+  <div id="guests">
     <p> <%= @event.description %></p>
-    <p> <%= @event.location %></p>
-  </section>
+  </div>
+</div>
 
-  <section>
-    <h4> Event Guests</h4>
+<div id="event_loc">
+  <p><i><%=image_tag("location.png",:alt => "Location", :width => 15,:height => 20) %></i> <%= @event.location %></p>
+</div>
+
+<div id="event_guests">
+  <h4 id="ev_guests_title">Event Guests</h4>
+  <div id="guests">
     <% @event.event_guests.each do |guest| %>
-    <p> <%= guest.user.user_profile.username  %></p>
+      <p> <%= guest.user.user_profile.username  %></p>
     <% end %>
-  </section>
+  </div>
+</div>
 
-  <section>
-    <h4> Comments</h4>
-    <% @event_comments.each do |comment|%>
-      <% @replies = comment.replies %>
-      <p> <%= comment.event_guest.user.user_profile.username%>: <%= comment.message %></p>
-        <% @replies.each do |reply| %>
-        <p> <%= reply.message %></p>
-      <% end %>
+
+<h4 id="ev_com"> Comments</h4>
+<% @event_comments.each do |comment|%>
+  <% @replies = comment.replies %>
+  <div id="event_comments">
+    <p> <%= comment.event_guest.user.user_profile.username%>: <%= comment.message %></p>
+    <% @replies.each do |reply| %>
+      <div id="event_reply">
+        <p><%= reply.event_guest.user.user_profile.username%>: <%= reply.message %></p>
+      </div>
     <% end %>
-  </section>
-</main>
-</body>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+

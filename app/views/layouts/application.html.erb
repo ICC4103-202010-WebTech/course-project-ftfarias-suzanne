@@ -13,7 +13,7 @@
   <body>
   <header id="application">
     <h1>
-      Teemo Events
+      <a class="aTitle"><%= link_to "Teemo Event", root_path %></a>
     </h1>
     <div class="box">
       <input type="text" placeholder="Search..">
@@ -30,6 +30,7 @@
       <li id="data"><%= link_to "Logout", "/logout"  %></li>
       <li id="data"><%= link_to @userProfile.username , "/user_profiles/1"%></li>
       <li id="data"><i><%= image_tag("usericon.png", :alt => "usericon", :width => 25, :height => 25) %></i> </li>
+      <li id="create"><%= link_to "Create Event",  new_event_path%></li>
     </ul>
   </nav>
 
@@ -38,8 +39,6 @@
       <%= yield %>
     </main>
   </div>
-
-  <%= link_to "Home", root_path %>
   </body>
 
   <footer>

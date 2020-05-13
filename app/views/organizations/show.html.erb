@@ -1,40 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<body>
+<div id="org_banner">
+  <p> <%= @organization.bannerpicture %></p>
+</div>
 
-<header>
-  <h2>
-    <%= @organization.name%>
-  </h2>
-</header>
+<h2 id="organization">
+  <%= @organization.name%>
+</h2>
 
-<main>
-  <section>
-    <p> <%= @organization.bannerpicture %></p>
-  </section>
+<div id="img_org">
+  <p> <%= @organization.picture %></p>
+</div>
 
-  <section>
-    <p> <%= @organization.picture %></p>
+<div id="org_desc">
+  <h4 id="org_events">Description:</h4>
+  <div id="o_members">
     <p> <%= @organization.description %></p>
-  </section>
+  </div>
+</div>
 
-  <aside>
-    <h4> <%= @organization.name %> Members</h4>
+<div id="org_members">
+  <h4 id="organization_members_title"> <%= @organization.name %> Members:</h4>
+  <div id="o_members">
     <% @members.each do |member|%>
-    <p> <%= link_to member.user_profile.username , member.user_profile %></p>
+      <p> <%= link_to member.user_profile.username , member.user_profile %></p>
     <% end %>
-  </aside>
+  </div>
+</div>
 
-  <section>
-    <h4> <%= @organization.name %> Members</h4>
-    <% @organization_events.each do |event|%>
-    <p> <%= link_to event.name, event %></p>
+<h4 id="organizationEvents"> <%= @organization.name %> Events</h4>
+<% @organization_events.each do |event|%>
+  <div id="org_e">
+    <h4 id="org_events"><%= link_to event.name, event %>:</h4>
+    <div id="o_members">
+      <p>Description: <%=event.description %></p>
+    </div>
+    <p><i><%=image_tag("location.png",:alt => "Location", :width => 15,:height => 20) %></i> <%= event.location %></p>
+    <aside id="org_event">
+      <p><%= event.picture %></p>
+    </aside>
+  </div>
+<% end %>
 
-    <% end %>
-  </section>
-</main>
 
-</body>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>

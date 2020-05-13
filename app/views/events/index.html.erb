@@ -1,26 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1 id="event_org">Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Event Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.description%></td>
-        <td><%= link_to "See event" , event %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @events.each do |event| %>
+  <div id="event_org">
+    <h3 id="event_org"><%= event.name %></h3>
+    <p>Description: <%= event.description%></p>
+    <p><i><%=image_tag("location.png",:alt => "Location", :width => 15,:height => 20) %></i> <%= event.location %></p>
+    <button class="button"> <%= link_to "See event" , event%></button>
+  </div>
+<% end %>
 
 <br>
 

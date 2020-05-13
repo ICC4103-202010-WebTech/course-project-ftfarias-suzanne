@@ -89,14 +89,10 @@ aside#customer_info {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     color: white;
     background: #333;
+    padding: 1em;
     height: 6em;
-    padding: 0em;
-    text-align: center;
 }
 
 ul#navbar {
@@ -132,6 +128,16 @@ ul#navbar li#data a {
     text-decoration: none;
 }
 
+ul#navbar li#create a {
+    display: block ;
+    color: snow;
+    text-align: left;
+    padding: 1em;
+    text-decoration: none;
+    position: relative;
+    left: 150px;
+}
+
 ul#navbar li#data i{
     display: block;
     text-align: left;
@@ -151,7 +157,7 @@ td,th {
 
 
 div section {
-    float: left;
+    float: bottom;
 }
 
 .center-div {
@@ -161,11 +167,11 @@ div section {
     right: 0;
     bottom: 0;
     left: 0;
-    width: 43%;
+    width: 42%;
 }
 
 section#events {
-
+    padding: 1em;
 }
 
 section#events h3{
@@ -179,7 +185,7 @@ section#events div {
     text-align: center;
     background: papayawhip;
     padding: 1em;
-    border: solid;
+    border: solid blue;
     box-sizing: inherit;
     margin: 0px 0px 25px 0px;
 }
@@ -209,7 +215,7 @@ section#organizations div {
     text-align: center;
     background: papayawhip;
     padding: 1em;
-    border: solid;
+    border: solid blue;
     box-sizing: inherit;
     margin: 0px 0px 25px 0px;
 }
@@ -249,12 +255,15 @@ div#user_profile {
 div#user_profile img#profilepicture{
     border: ridge dodgerblue;
     position: relative;
-    left: -15px;
+    left: -190px;
 }
 
 div#user_profile div#user_bio{
     float: right;
     width: 60%;
+    position: relative;
+    top: -185px;
+    left: -70px;
  }
 div#user_profile div#user_bio img{
     padding: 1px;
@@ -268,16 +277,20 @@ div#user_profile div#user_bio section{
     border: 3px solid dodgerblue;
     text-align: left;
     vertical-align: top;
+    position: relative;
+    left: -30px;
 }
 div#user_profile div#user_info{
     padding: 1px;
     display: inline;
+    position: relative;
+    left: -190px;
 }
 div#user_profile div#user_relations{
     float: right;
     position: relative;
     left: 275px;
-    top: -175px;
+    top: -355px;
 }
 
 div#user_relations div#user_events{
@@ -309,6 +322,268 @@ div#user_relations div#user_organizations{
     width:125px;
     height: 26px;
 }
+h3#event_org {
+    text-align: center;
+    color: black;
+    text-decoration: underline;
+    padding: 1em;
+}
 
+div#event_org div p i {
+    padding: 0.2em;
+}
 
+div#event_org {
+    text-align: center;
+    background: papayawhip;
+    padding: 2em;
+    border: solid blue;
+    box-sizing: inherit;
+    margin: 0px 0px 25px 405px;
+    width: 30%;
+}
 
+h1#event_org {
+    text-decoration: underline;
+    text-align: center;
+}
+
+h2#event {
+    text-decoration: underline;
+    text-align: center;
+}
+
+div#event_desc {
+    text-align: center;
+    background: papayawhip;
+    padding: 2em;
+    border: solid blue;
+    box-sizing: inherit;
+    position: relative;
+    left: 435px;
+    width: 25%;
+}
+
+div#img {
+    float: left;
+    text-align: center;
+    background: black;
+    padding: 2em;
+    border: solid blue;
+    box-sizing: inherit;
+    position: relative;
+    left: 150px;
+    width: 10%;
+}
+
+div#event_loc {
+    text-align: left;
+    color: black;
+    position:relative;
+    left: 150px;
+    top: -95px;
+}
+div#event_loc div p i {
+    padding: 0.2em;
+}
+
+div#event_guests {
+    text-align: center;
+    background: papayawhip;
+    padding: 1em;
+    border: solid blue;
+    position: relative;
+    left: 920px;
+    top: -252px;
+    width: 15%;
+}
+div#guests {
+    text-align: center;
+    background: white;
+    padding: 0.5em;
+    border: solid black;
+}
+
+div#event_comments {
+    text-align: left;
+    background: papayawhip;
+    border: solid blue;
+    padding: 1em;
+    width: 40%;
+    position: relative;
+    top: -170px;
+    left: 360px;
+    margin: 0px 0px 5px 0px;
+}
+h4#ev_com {
+    text-decoration: underline;
+    text-align: center;
+    position: relative;
+    top: -170px;
+}
+h4#ev_guests_title {
+    text-decoration: underline;
+    text-align: center;
+}
+h4#ev_description_title{
+    text-decoration: underline;
+    text-align: center;
+    position: relative;
+    left: -85px;
+}
+
+div#event_reply {
+    text-align: left;
+    background: lightgray;
+    border: solid blue;
+    padding:0.2em;
+}
+
+div#org_members {
+    text-align: center;
+    background: papayawhip;
+    padding: 1em;
+    border: solid blue;
+    margin: 38px 0px 0px 900px;
+    width: 15%;
+}
+div#org_banner {
+    background: black;
+    border: solid blue;
+    padding: 3em;
+}
+h2#organization {
+    text-decoration: underline;
+    text-align: center;
+}
+
+div#org_desc {
+    float: left;
+    text-align: center;
+    background: papayawhip;
+    padding: 2em;
+    border: solid blue;
+    box-sizing: inherit;
+    margin: 20px 0px 5px 110px;
+    width: 25%;
+}
+
+div#img_org {
+    float: left;
+    text-align: center;
+    background: black;
+    padding: 2em;
+    border: solid blue;
+    box-sizing: inherit;
+    margin: 20px 0px 0px 130px;
+    width: 10%;
+}
+
+div#org_loc {
+    text-align: left;
+    color: black;
+    margin: 170px 0px 0px 130px;
+}
+
+div#o_members {
+    text-align: center;
+    background: white;
+    padding: 0.5em;
+    border: solid black;
+}
+
+aside#org_event {
+    background: black;
+    border: solid black;
+    width: 20%;
+    position: relative;
+    left: 400px;
+    top: -180px;
+}
+div#org_e div p i {
+    padding: 0.2em;
+}
+h4#org_events {
+    text-align: left;
+    text-decoration: underline;
+}
+h4#organizationEvents {
+    text-align: center;
+    text-decoration: underline;
+    position: relative;
+    top: 50px;
+}
+h4#organization_members_title {
+    text-align: center;
+    text-decoration: underline;
+}
+div#org_e {
+    text-align: left;
+    background: papayawhip;
+    border: solid blue;
+    padding: 1em;
+    width: 40%;
+    position: relative;
+    margin: 0px 0px 25px 0px;
+    top: 40px;
+    left: 362px;
+}
+
+.aTitle {
+    color: snow;
+    text-decoration: none;
+}
+
+.aTitle:hover {
+    color: orangered;
+}
+
+div#mailbox div#invitation{
+    padding: 10px;
+    border: solid black;
+    margin: 0px 0px 10px 0px;
+}
+
+div#invitation img{
+    float: left;
+    position: relative;
+    top:30px;
+}
+div#mailbox {
+    text-align: center;
+    width: 30%;
+    margin: auto;
+}
+
+div#mailbox h2{
+    color: snow;
+    border: black;
+    background: dodgerblue;
+    font-size: 30px;
+    margin: 0px 0px 20px 0px;
+    position: relative;
+    top: 20px;
+    width: 100%;
+}
+
+main#logout {
+    text-align: center;
+}
+aside#logout {
+    text-align: center;
+}
+
+h1#new_event {
+    text-align: center;
+    text-decoration: underline;
+}
+div#new_event {
+    text-align: center;
+    padding: 1em;
+    border: solid blue;
+    background: papayawhip;
+    width: 50%;
+    position: relative;
+    left: 280px;
+    margin: 0px 0px 5px 0px;
+}

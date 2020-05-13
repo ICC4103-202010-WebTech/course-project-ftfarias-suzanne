@@ -11,6 +11,34 @@ a) rake db:migrate
 b) rake db:setup
 
 ******************************************************************************************
+Assignment 2
+
+IMPORTANT!!
+Please run the aplication in a laptop-destop resolution (lower resolutions like 1024x768 doesn't work right).
+We used only one stylesheet for this application (application.css), creating ids and classes for every view.
+
+- The application permits a read only navegation of the web page, we assumed that the user is already logged in. 
+	The application includes the following views:
+	- A home page with the users events and organizations.
+	- A page for all the events.
+	- A page for all the organizations.
+	- The user profile.
+	- A view for creating a new event.
+	- A mailbox view with the invitations.
+	- A logout view.
+	- Specific event and organization page.
+
+- The are some views that are missing like:
+	- Edit events, organization and profile.
+	- A view for photos, videos and attachments of an organization.
+
+- We developed strictly RESTful API to perform CRUD operations on Event and Comment resources.
+	The postman API tests are in the next link: https://www.getpostman.com/collections/980ceec88199506e1d1d
+
+
+******************************************************************************************
+Assignment 1.2
+
 Model Layer Functionality and Behavior:
 
 Through point 1 to 10, we wrote how the queries should be written based on our model.
@@ -54,3 +82,5 @@ Through point 11 to 15, we explained how validations and deletions work based on
  	c) User is an Event Guest: if a user is an event guest, then the event guest associated to this user will be deleted from the event wich they are guests, including their comments and replies in the event.
 
  	d) User is an Organization Administrator: if the deleted user is an organization administrator, then the organization_administrator entity associated to this user will be deleted, deleting also the organization that was created by him. Following the deletions in point 14, and then 13 if the organization had any events.
+
+

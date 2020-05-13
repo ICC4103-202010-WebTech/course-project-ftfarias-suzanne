@@ -1,25 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Organizations</h1>
+<h1 id="event_org">Organizations</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Organization Name</th>
-    <th>Members Nº</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @organizations.each do |organization| %>
-    <tr>
-      <td><%= organization.name %></td>
-      <td><%= organization.users.count%></td>
-      <td><%= link_to "See organization" , organization %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
+<% @organizations.each do |organization| %>
+  <div id="event_org">
+    <h3 id="event_org"><%= organization.name %></h3>
+    <p><%= organization.description%></p>
+    <p><i><%=image_tag("multiple-users-silhouette.png",:alt => "users", :width => 30,:height => 25) %></i> <%= organization.users.count%></p>
+    <button class="button"> <%= link_to "See organization" , organization%></button>
+  </div>
+<% end %>
 <br>
+
