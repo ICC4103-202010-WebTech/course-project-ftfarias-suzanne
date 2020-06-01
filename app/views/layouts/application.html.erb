@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 
 <head>
   <title>Course Project Ftfarias Sizanni</title>
@@ -9,11 +9,11 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
-<header class="text-center bg-info m-auto">
+<body class="d-flex flex-column h-100">
+<header class="text-center bg-info">
   <div>
     <h1 class="h-100">
-      <a class="badge badge-pill badge-info" <%= link_to "Teemo Events", root_path %></a>
+      <a class="badge badge-pill badge-info"<%= link_to "Teemo Events", root_path %></a>
     </h1>
     <div class="md-form mt-0 pb-2">
       <input type="text" placeholder="Search" aria-label="Search">
@@ -51,7 +51,7 @@
 
   <footer class="footer bg-dark text-light mt-auto py-2">
     <div class="container">
-      <p class="float-right pr-3 pt-3">
+      <p class="float-right pt-3">
         <a class="text-light" href="#">Back to top</a>
       </p>
       <h4>Contact Information</h4>
