@@ -6,4 +6,6 @@ class Event < ApplicationRecord
   has_many :replies, through: :comments
   has_many :event_guests ,dependent: :destroy
   has_many :invitations, dependent: :destroy
+  has_one_attached :event_picture
+
 end

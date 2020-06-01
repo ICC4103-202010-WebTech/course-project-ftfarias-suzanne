@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1 id="event_org">Events</h1>
-
-<% @events.each do |event| %>
-  <div id="event_org">
-    <h3 id="event_org"><%= event.name %></h3>
-    <p>Description: <%= event.description%></p>
-    <p><i><%=image_tag("location.png",:alt => "Location", :width => 15,:height => 20) %></i> <%= event.location %></p>
-    <button class="button"> <%= link_to "See event" , event%></button>
-  </div>
-<% end %>
-
-<br>
-
+<div class="text-center">
+  <h1>Events</h1>
+  <% @events.each do |event| %>
+    <div class="card mb-4 shadow-sm mx-auto w-50">
+      <div class="card-header">
+        <h3 id="event_org"><%= event.name %></h3>
+      </div>
+      <%= link_to image_tag("thumbnail.svg", class: "card-img-top", background: "#55595c", color: "#eceeef"), url_for(event) %>
+      <div class="card-body">
+        <p class="card-text">Description: <%= event.description%></p>
+        <p class="card-text"><i class="fas fa-location-arrow mr-1 fa-lg"> </i> <%= event.location %></p>
+        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+      </div>
+    </div>
+  <% end %>
+</div>

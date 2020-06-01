@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<div id="mailbox">
-  <h2>Inbox</h2>
 
-  <% @invitations.each do |invitation| %>
-    <div id="invitation">
-      <%= image_tag("mail.png", :alt => "mail", :width => 45, :height => 45) %>
-      <p id="sender"><%=  link_to invitation.event.event_creator.user.user_profile.username , invitation.event.event_creator.user.user_profile %></p>
-      <p><%= invitation.message %> <%=invitation.event.name %></p>
-      <p> <%= link_to "Accept Invitation" , invitation.event%></p>
+<h2 class="text-center">Inbox</h2>
+<% @invitations.each do |invitation| %>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <%= image_tag("mail.png", :alt => "mail", :width => 45, :height => 45) %>
+          </div>
+          <div class="col-md-10">
+            <p><u><%=  link_to invitation.event.event_creator.user.user_profile.username , invitation.event.event_creator.user.user_profile %></u></p>
+            <div class="clearfix"></div>
+            <p><%= invitation.message %> <%=invitation.event.name %></p>
+            <button type="button" class="btn btn-sm btn-outline-secondary float-right">
+              <%= link_to "Accept Invitation" , invitation.event%>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

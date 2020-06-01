@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1 id="event_org">Organizations</h1>
-
-<% @organizations.each do |organization| %>
-  <div id="event_org">
-    <h3 id="event_org"><%= organization.name %></h3>
-    <p><%= organization.description%></p>
-    <p><i><%=image_tag("multiple-users-silhouette.png",:alt => "users", :width => 30,:height => 25) %></i> <%= organization.users.count%></p>
-    <button class="button"> <%= link_to "See organization" , organization%></button>
-  </div>
-<% end %>
-<br>
-
+<div class="text-center">
+  <h1>Organizations</h1>
+  <% @organizations.each do |organization| %>
+    <div class="card mb-4 shadow-sm mx-auto w-50">
+      <div class="card-header">
+        <h3 id="event_org"><%= organization.name %></h3>
+      </div>
+      <%= link_to image_tag("thumbnail.svg", class: "card-img-top", background: "#55595c", color: "#eceeef"), url_for(organization) %>
+      <div class="card-body">
+        <p class="card-text"><%= organization.description%></p>
+        <p class="card-text"><i class="fas fa-users mr-1 fa-lg"> </i><%= organization.users.count%></p>
+        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See organization" , organization%></button>
+      </div>
+    </div>
+  <% end %>
+</div>

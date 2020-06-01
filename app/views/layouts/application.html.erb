@@ -10,13 +10,13 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class="d-flex flex-column h-100">
-<header class="text-center bg-info">
+<header class="header text-center">
   <div>
     <h1 class="h-100">
-      <a class="badge badge-pill badge-info"<%= link_to "Teemo Events", root_path %></a>
+      <a class="text-light" <%= link_to "Teemo Events", root_path %></a>
     </h1>
     <div class="md-form mt-0 pb-2">
-      <input type="text" placeholder="Search" aria-label="Search">
+      <input type="text" placeholder="Search.." aria-label="Search">
     </div>
   </div>
 
