@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <title>CourseProjectFtfariasSizanni</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Course Project Ftfarias Sizanni</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  <header id="application">
-    <h1>
-      <a class="aTitle"><%= link_to "Teemo Event", root_path %></a>
-    </h1>
-    <div class="box">
-      <input type="text" placeholder="Search..">
-    </div>
-
-  </header>
-
-  <nav>
-    <ul id="navbar">
-      <li><a href="/events">Events</a> </li>
-      <li><a href="/organizations">Organizations</a> </li>
-      <li><a href="/user_profiles/1">Your Profile</a> </li>
-      <li><a href="/mailboxes/1">Mailbox</a> </li>
-      <li id="data"><%= link_to "Logout", "/logout"  %></li>
-      <li id="data"><%= link_to @userProfile.username , "/user_profiles/1"%></li>
-      <li id="data"><i><%= image_tag("usericon.png", :alt => "usericon", :width => 25, :height => 25) %></i> </li>
-      <li id="create"><%= link_to "Create Event",  new_event_path%></li>
-    </ul>
-  </nav>
-
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<header class="text-center bg-info m-auto">
   <div>
-    <main>
-      <%= yield %>
-    </main>
+    <h1 class="h-100">
+      <a class="badge badge-pill badge-info" <%= link_to "Teemo Events", root_path %></a>
+    </h1>
+    <div class="md-form mt-0 pb-2">
+      <input type="text" placeholder="Search" aria-label="Search">
+    </div>
   </div>
-  </body>
 
-  <footer>
-    <h4>Contact Information</h4>
-    <p>teemoevents@gmail.com</p>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><%=link_to "Events",events_path, class: "nav-link text-light"%></li>
+        <li class="nav-item"><%=link_to "Organizations",organizations_path, class: "nav-link text-light"%> </li>
+        <li class="nav-item"><%=link_to "Your Profile", "/user_profiles/1", class: "nav-link text-light" %></li>
+        <li class="nav-item"><%= link_to "Mailbox","/mailboxes/1", class: "nav-link text-light"%></li>
+        <li class="nav-item">
+        </li>
+      </ul>
+      <form class="form-inline  my-lg-0">
+        <i class="fas fa-user-circle text-light fa-2x"></i>
+        <a class="nav-item"><%= link_to @userProfile.username , "/user_profiles/1", class: "nav-link text-light"%></a>
+        <a class="nav-item"><%= link_to "Logout", "/logout", class: "nav-link text-light"%></a>
+      </form>
+    </div>
+  </nav>
+</header>
+
+
+<div>
+  <main>
+    <%= yield %>
+  </main>
+</div>
+
+  <footer class="footer bg-dark text-light mt-auto py-2">
+    <div class="container">
+      <p class="float-right pr-3 pt-3">
+        <a class="text-light" href="#">Back to top</a>
+      </p>
+      <h4>Contact Information</h4>
+      <p>teemoevents@gmail.com</p>
+    </div>
   </footer>
-
+</body>
 </html>
