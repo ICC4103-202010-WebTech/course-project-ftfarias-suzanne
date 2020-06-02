@@ -4,6 +4,12 @@ class Organization < ApplicationRecord
   has_many :users
   before_destroy :kick_users
 
+  has_one_attached :banner_picture
+  has_one_attached :org_picture
+
+
+  validates :description, :name, presence: true
+
   private
   def kick_users
     users=self.users

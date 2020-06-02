@@ -1,17 +1,111 @@
-<%= form_with(model: user_profile, local: true) do |form| %>
-  <% if user_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
+<div>
+  <%= form_with model: user_profile, local: true do |form| %>
+      <%= errors_for user_profile%>
+    <div class="container emp-profile">
+      <form method="post">
+        <div  id=profile_row class="row m-0 p-0">
+          <div class="col-md-4 ml-0">
+            <div class="profile-img ">
+              <% if @user_profile.avatar.attached? %>
+                <%= image_tag(@user_profile.avatar, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
+              <% else %>
+                <%=image_tag("thumbnail.svg", class: "card-img-top", height: "150px", background:"#55595c", color: "#eceeef") %>
+              <% end %>
+              <div class=" form-group m-0 p-0">
+                <%= form.file_field :avatar, class: " file btn form-control-file" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="profile-head">
+              <div>
+                <h6>
+                  <div class="form-group">
+                    <i class="fas fa-info-circle"> </i>
+                    <%= form.label :bio%>
+                    <%= form.text_area :bio , class: "form-control"%>
+                  </div>
+                </h6>
+              </div>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item ">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 pt-5 ml-3">
+            <div class="profile-work">
+            </div>
+          </div>
 
-      <ul>
-        <% user_profile.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+          <div class="col-md-7">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row pt-4">
+                  <div class="col-md-3">
+                    <div class="form-group pt-1">
+                      <%= form.label :username%>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <%= form.text_field :username, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group pt-1">
+                      <%= form.label :name%>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <%= form.text_field :name, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group pt-1">
+                      <%= form.label :last_name%>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <%= form.text_field :lastname, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group pt-1">
+                      <%= form.label :phone%>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <%= form.text_field :phone, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group pt-1">
+                      <%= form.label :address%>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <%= form.text_field :address, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="form-group mt-2 text-center">
+        <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
-<% end %>
+</div>
+
+
+

@@ -10,8 +10,8 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
-    @user_events= Event.joins(event_guests: :user).where(users: {id: 1})
-    @user_organizations = Organization.joins(:users).where(users: {id: 1})
+    @user_events= Event.joins(event_guests: :user).where(users: {id: @user_profile.user.id})
+    @user_organizations = Organization.joins(:users).where(users: {id: @user_profile.user.id})
   end
 
   # GET /user_profiles/new
@@ -44,7 +44,7 @@ class UserProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @user_profile.update(user_profile_params)
-        format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
+        format.html { redirect_to @user_profile, notice: "User profile was successfully updated." }
         format.json { render :show, status: :ok, location: @user_profile }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class UserProfilesController < ApplicationController
   def destroy
     @user_profile.destroy
     respond_to do |format|
-      format.html { redirect_to user_profiles_url, notice: 'User profile was successfully destroyed.' }
+      format.html { redirect_to user_profiles_url, noti:'User profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class UserProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_profile_params
-      params.fetch(:user_profile, {})
+      params.fetch(:user_profile, {}).permit( :id, :username,:name,:lastname, :bio, :phone, :address, :avatar, :user_id)
     end
 end

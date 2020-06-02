@@ -1,11 +1,15 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
 <div class="container emp-profile">
   <form method="post">
     <div class="row">
       <div class="col-md-4">
         <div class="profile-img">
-          <%=image_tag("teemologo.jpg",:alt => "teemo", height: "150px") %></i>
+          <% if @event.picture.attached? %>
+            <%= image_tag(@event.picture, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
+          <% else %>
+            <%=image_tag("thumbnail.svg", class: "card-img-top", height: "150px", background:"#55595c", color: "#eceeef") %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-6">
@@ -30,14 +34,16 @@
         </div>
       </div>
       <div class="col-md-2">
-        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Event"/>
+       <%= link_to "Edit Event", edit_event_path , class: "profile-edit-btn mr-1 text-info"%>
+        <%= link_to 'Delete Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
+
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
       </div>
       <div class="col-md-8">
-        <div class="tab-content profile-tab" id="myTabContent">
+        <div class="tab-content profile-tab" id="myTa=bContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
               <div class="col-md-6">
@@ -104,3 +110,4 @@
     </div>
   </form>
 </div>
+
