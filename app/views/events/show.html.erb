@@ -5,8 +5,8 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-img">
-          <% if @event.picture.attached? %>
-            <%= image_tag(@event.picture, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
+          <% if @event.event_picture.attached? %>
+            <%= image_tag(@event.event_picture, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
           <% else %>
             <%=image_tag("thumbnail.svg", class: "card-img-top", height: "150px", background:"#55595c", color: "#eceeef") %>
           <% end %>

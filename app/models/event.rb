@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   has_many :event_guests ,dependent: :destroy
   has_many :invitations, dependent: :destroy
 
-  has_one_attached :picture
+  has_one_attached :event_picture
 
   validates :name, :location, :description, presence: true
 
