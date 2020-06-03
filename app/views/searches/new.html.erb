@@ -1,0 +1,18 @@
+<div class="text-center">
+  <h1 class="text-capitalize">Advanced Search</h1>
+
+  <%= form_for @search do |f| %>
+    <div class="container pt-5">
+      <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+          <%= f.text_field :keywords , class: "search_input", placeholder: "Search..." %>
+          <%= button_tag(type: "submit", class: "search_icon") do %>
+            <span><i class="fas fa-search"></i></span>
+          <% end %>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
