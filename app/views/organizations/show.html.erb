@@ -37,13 +37,15 @@
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#events" role="tab" aria-controls="profile" aria-selected="false">Events</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#attachments" role="tab" aria-controls="profile" aria-selected="false">Attachments</a>
+            </li>
           </ul>
         </div>
       </div>
       <div class="col-md-2">
         <%= link_to "Edit Organization", edit_organization_path , class: "profile-edit-btn mr-1 text-info"%>
         <%= link_to 'Delete Organization', organization_path(@organization), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 pr-0 text-danger"%>
-
       </div>
     </div>
     <div class="row">
@@ -62,16 +64,18 @@
             <div class="row">
               <% @members.each do |member|%>
                 <div class="col-md-10">
-                  <p> <%= link_to member.user_profile.username , member.user_profile %></p>
+                  <p> <i class="fas fa-user mr-1 text-dark"></i><%= link_to member.user_profile.username , member.user_profile %></p>
                 </div>
               <% end %>
             </div>
           </div>
           <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="profile-tab">
+            <h6 class="mb-2">These are the organization events of this organization</h6>
             <div class="row">
               <div class="text-center">
                 <% @organization_events.each do |event|%>
-                  <div class="col-md-10">
+                  <% if event.publicEvent == true %>
+                  <div class="col-md-14">
                     <div class="card mb-4 shadow-sm mx-auto">
                       <div class="card-header">
                         <h3 id="event_org"><%= event.name %></h3>
@@ -83,7 +87,69 @@
                       </div>
                     </div>
                   </div>
+                    <%end %>
                 <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="attachments" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row">
+              <div class="card ml-4 mb-3 ">
+                <div class="card-header">
+                  <h3>PDF attachments</h3>
+                </div>
+                <div class="card-body">
+                  <% if @organization.pdf.attached? %>
+
+                    <% @organization.pdf.each do |pdf| %>
+                      <div class="mb-3">
+                        <%= link_to pdf.blob.filename, url_for(pdf), class: "text-info" %>
+                      </div>
+                    <%end %>
+                  <% else %>
+                    <p class="ml-3">This organizations hasn't any pdf attachments yet</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="card ml-4 mb-3 ">
+                <div class="card-header">
+                  <h3>Picture attachments</h3>
+                </div>
+                <div class="card-body">
+                  <% if @organization.pictures.attached? %>
+
+                    <% @organization.pictures.each do |picture| %>
+                      <div class="mb-3">
+                        <%= link_to picture.blob.filename, url_for(picture), class: "text-info" %>
+                      </div>
+                    <%end %>
+                  <% else %>
+                    <p class="ml-3">This organizations hasn't any picture attachments yet</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="card ml-4 mb-3 ">
+                <div class="card-header">
+                  <h3>Video attachments</h3>
+                </div>
+                <div class="card-body">
+                  <% if @organization.videos.attached? %>
+
+                    <% @organization.videos.each do |video| %>
+                      <div class="mb-3">
+                        <%= link_to video.blob.filename, url_for(video), class: "text-info" %>
+                      </div>
+                    <%end %>
+                  <% else %>
+                    <p class="ml-3">This organizations hasn't any video attachments yet</p>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

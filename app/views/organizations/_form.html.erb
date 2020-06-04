@@ -41,6 +41,9 @@
                 <li class="nav-item ">
                   <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#attachments" role="tab" aria-controls="profile" aria-selected="false">Attachments</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -63,6 +66,27 @@
                   </div>
                   <div class="col-md-6">
                     <%= form.text_area :description, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="attachments" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row mb-3 mt-3">
+                  <div class="text-center">
+                      <p class="ml-3">Add pdf attachments here</p>
+                      <%= form.file_field :pdf, multiple: true %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="text-center">
+                    <p class="ml-3">Add picture attachments here</p>
+                    <%= form.file_field :pictures, multiple: true %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="text-center">
+                    <p class="ml-3">Add video attachments here</p>
+                    <%= form.file_field :videos, multiple: true %>
                   </div>
                 </div>
               </div>

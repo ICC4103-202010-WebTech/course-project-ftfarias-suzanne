@@ -12,7 +12,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="profile-head">
           <h4>
             <%= @user_profile.name%> <%=@user_profile.lastname%>
@@ -29,17 +29,19 @@
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Events</a>
+              <a class="nav-link" id="organizations-tab" data-toggle="tab" href="#organizations" role="tab" aria-controls="organizations" aria-selected="false">Organizations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="organizations-tab" data-toggle="tab" href="#organizations" role="tab" aria-controls="organizations" aria-selected="false">Organizations</a>
+              <a class="nav-link" id="created_events-tab" data-toggle="tab" href="#created_events" role="tab" aria-controls="created_events" aria-selected="false">Created Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Events</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="col-md-2">
         <%= link_to "Edit Profile", edit_user_profile_path , class: "profile-edit-btn mr-1 text-info"%>
-<!--        CAMBIAR-->
         <%= link_to 'Delete User', user_path(@user_profile.user), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
 
       </div>
@@ -94,30 +96,68 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
-            <% @user_events.each do |event| %>
-              <div class="row">
-                <div class="col-md-3">
-                  <label><%= event.name%></label>
-                </div>
-                <div class="col-md-6">
-                  <p><%= link_to "See event", event %></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
 
           <div class="tab-pane fade" id="organizations" role="tabpanel" aria-labelledby="organizations-tab">
-            <% @user_organizations.each do |organization| %>
-              <div class="row">
-                <div class="col-md-3">
-                  <label><%=organization.name%></label>
-                </div>
-                <div class="col-md-6">
-                  <p><%= link_to "See organization" , organization %></p>
-                </div>
+            <div class="row">
+              <div class="text-center">
+                <% @user_organizations.each do |organization|%>
+                  <div class="col-md-13">
+                    <div class="card mb-4 shadow-sm mx-auto">
+                      <div class="card-header">
+                        <h3 id="event_org"><%= organization.name %></h3>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Description: <%= organization.description%></p>
+                        <p class="card-text"> <i class="fas fa-users mr-1 fa-lg text-dark"></i> <%= organization.users.count %></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See organization" , organization%></button>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
-            <% end %>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="created_events" role="tabpanel" aria-labelledby="created_events-tab">
+            <div class="row">
+              <div class="text-center">
+                <% @user_profile.user.event_creator.events.each do |event|%>
+                  <div class="col-md-13">
+                    <div class="card mb-4 shadow-sm mx-auto">
+                      <div class="card-header">
+                        <h3 id="event_org"><%= event.name %></h3>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Description: <%= event.description%></p>
+                        <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+            <div class="row">
+              <div class="text-center">
+                <% @user_events.each do |event|%>
+                  <div class="col-md-13">
+                    <div class="card mb-4 shadow-sm mx-auto">
+                      <div class="card-header">
+                        <h3 id="event_org"><%= event.name %></h3>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Description: <%= event.description%></p>
+                        <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>

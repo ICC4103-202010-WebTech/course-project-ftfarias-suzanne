@@ -6,6 +6,9 @@ class Organization < ApplicationRecord
 
   has_one_attached :banner_picture
   has_one_attached :org_picture
+  has_many_attached :pdf
+  has_many_attached :pictures
+  has_many_attached :videos
 
 
   validates :description, :name, presence: true
