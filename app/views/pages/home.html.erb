@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <div class="text-center">
-  <h3 class="pb-2">Your Upcoming Events</h3>
+  <h3 class="big_title pb-2">Your Upcoming Events</h3>
   <% @upcoming_events.each do |upcoming_event| %>
     <div class="card mb-4 shadow-sm mx-auto w-50">
       <div class="card-header">
         <h4><%= upcoming_event.name %></h4>
       </div>
-      <%= link_to image_tag("thumbnail.svg", class: "card-img-top", background: "#55595c", color: "#eceeef"), url_for(upcoming_event) %>
+      <% if upcoming_event.event_picture.attached? %>
+        <%= link_to image_tag(upcoming_event.event_picture, class: "card-img-top", height: "318.75px" ,background: "#55595c", color: "#eceeef"), url_for(upcoming_event) %>
+      <% else %>
+        <%=link_to image_tag("thumbnail.svg", class: "card-img-top", background:"#55595c", color: "#eceeef") , url_for(upcoming_event)%>
+      <% end %>
       <div class="card-body">
         <p class="card-text"> Description: <%= upcoming_event.description%></p>
         <p class="card-text"><i class="fas fa-location-arrow mr-1 fa-lg"> </i><%=upcoming_event.location %></p>
@@ -15,13 +19,17 @@
       </div>
     </div>
   <% end %>
-  <h3 class="pb-2">Your Organizations</h3>
+  <h3 class="big_title pb-2">Your Organizations</h3>
   <% @user_organizations.each do |organization| %>
     <div class="card mb-4 shadow-sm mx-auto w-50">
       <div class="card-header">
         <h4><%=  link_to organization.name , organization%></h4>
       </div>
-      <%= link_to image_tag("thumbnail.svg", class: "card-img-top", background: "#55595c", color: "#eceeef"), url_for(organization) %>
+      <% if organization.org_picture.attached? %>
+        <%= link_to image_tag(organization.org_picture, class: "card-img-top", height: "318.75px" ,background: "#55595c", color: "#eceeef"), url_for(organization) %>
+      <% else %>
+        <%=link_to image_tag("thumbnail.svg", class: "card-img-top", background:"#55595c", color: "#eceeef") , url_for(organization)%>
+      <% end %>
       <div class="card-body">
         <p class="card-text">Description: <%= organization.description%></p>
         <p class="card-text"><i class="fas fa-users mr-1 fa-lg"> </i><%= organization.users.count %></p>

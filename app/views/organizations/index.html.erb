@@ -1,13 +1,17 @@
 <p id="notice" class="text-center"><%= notice %></p>
 
 <div class="text-center">
-  <h1>Organizations</h1>
+  <h3 class="big_title">Organizations</h3>
   <% @organizations.each do |organization| %>
     <div class="card mb-4 shadow-sm mx-auto w-50">
       <div class="card-header">
         <h3 id="event_org"><%= organization.name %></h3>
       </div>
-      <%= link_to image_tag("thumbnail.svg", class: "card-img-top", background: "#55595c", color: "#eceeef"), url_for(organization) %>
+      <% if organization.org_picture.attached? %>
+        <%= link_to image_tag(organization.org_picture, class: "card-img-top", height: "318.75px" ,background: "#55595c", color: "#eceeef"), url_for(organization) %>
+      <% else %>
+        <%=link_to image_tag("thumbnail.svg", class: "card-img-top", background:"#55595c", color: "#eceeef") , url_for(organization)%>
+      <% end %>
       <div class="card-body">
         <p class="card-text"><%= organization.description%></p>
         <p class="card-text"><i class="fas fa-users mr-1 fa-lg"> </i><%= organization.users.count%></p>

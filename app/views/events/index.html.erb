@@ -1,13 +1,17 @@
 <p id="notice" class="text-center"><%= notice %></p>
 
 <div class="text-center">
-  <h1>Events</h1>
+  <h3 class="big_title">Events</h3>
   <% @events.each do |event| %>
     <div class="card mb-4 shadow-sm mx-auto w-50">
       <div class="card-header">
         <h3 id="event_org"><%= event.name %></h3>
       </div>
-      <%= link_to image_tag("thumbnail.svg", class: "card-img-top", background: "#55595c", color: "#eceeef"), url_for(event) %>
+      <% if event.event_picture.attached? %>
+        <%= link_to image_tag(event.event_picture, class: "card-img-top", height: "318.75px" ,background: "#55595c", color: "#eceeef"), url_for(event) %>
+      <% else %>
+        <%=link_to image_tag("thumbnail.svg", class: "card-img-top", background:"#55595c", color: "#eceeef") , url_for(event)%>
+      <% end %>
       <div class="card-body">
         <p class="card-text">Description: <%= event.description%></p>
         <p class="card-text"><i class="fas fa-location-arrow mr-1 fa-lg"> </i> <%= event.location %></p>
