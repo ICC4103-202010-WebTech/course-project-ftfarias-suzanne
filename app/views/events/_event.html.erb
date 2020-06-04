@@ -1,3 +1,10 @@
-<div >
-  <h2><%= link_to event.name, event %></h2>
+<div class="card page-background mx-auto w-50 mt-2 mb-2">
+  <h3> <i class="fas fa-calendar-alt mr-2"></i><%= link_to event.name, event, class: "text-info" %></h3>
+  <% if event.organization != nil%>
+    <p>This event belongs to the organization: </p>
+      <h6><%= link_to event.organization.name , event.organization, class: "text-info"%></h6>
+
+  <%else %>
+    <p>This event doesn't belongs to any organization </p>
+  <%end %>
 </div>

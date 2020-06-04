@@ -57,7 +57,6 @@
   margin-top: 1%;
   margin-bottom: 3%;
   border-radius: 0.5rem;
-  background: #fff;
 }
 .profile-img{
   text-align: center;
@@ -205,4 +204,41 @@
   border-radius: 50%;
   color:white;
   text-decoration:none;
+}
+
+.big-title {
+  margin-bottom: 3em;
+}
+h3.big_title {
+  font-size: 2em;
+  color: #212121;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+  font-weight: 700;
+}
+p.title-para {
+  text-align: center;
+  font-size: 0.9em;
+  color: #585857;
+  letter-spacing: 4px;
+}
+
+.page-background {
+  background: gray url(https://subtlepatterns.com/patterns/geometry2.png) repeat 0 0;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  padding-top: 0px;
+  box-sizing: border-box;
+  -webkit-animation: slide 20s linear infinite;
+}
+
+.page-background h1 {
+  font-family: sans-serif;
+}
+
+@-webkit-keyframes slide {
+  from { background-position: 0 0; }
+  to { background-position: -400px 0; }
 }

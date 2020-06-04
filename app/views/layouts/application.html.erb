@@ -9,12 +9,12 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body class="d-flex flex-column h-100">
-<header class="header text-center">
+<body class="d-flex flex-column h-100 page-background">
+<header class="header text-center mt-0">
   <div>
-    <h1 class="h-100">
+    <h3 class="big_title pt-2">
       <a class="text-light" <%= link_to "Teemo Events", root_path %></a>
-    </h1>
+    </h3>
     <div class="md-form mt-0 pb-2">
        <%= link_to "Advanced Search", new_search_path, class: "text-light" %><i class="fas fa-search text-light ml-2"></i>
     </div>

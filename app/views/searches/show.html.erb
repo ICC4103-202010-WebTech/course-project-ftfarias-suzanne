@@ -1,13 +1,59 @@
-<h1>Search Results</h1>
+<div class="text-center">
+  <h3 class="big_title pt-1">Search Results</h3>
+</div>
 
-<% unless @search.users == nil %>
-  <%= render @search.users %>
-<%end %>
+<div class="text-center">
+  <div class="w-50 pt-2 mx-auto mb-4 card page-background">
+    <h3 class="text-center pt-1">
+      Users Results
+    </h3>
+    <% if @search.users.count == 1 %>
+      <strong class="pt-1 mb-3">There is <%=@search.users.count %> user matching the search!</strong>
 
-<% unless @search.events == nil %>
-  <%= render @search.events %>
-<%end %>
+    <% else %>
+      <strong class="pt-1 mb-3">There are <%=@search.users.count %> users matching the search!</strong>
+    <% end  %>
+    <% if @search.users.count != 0 %>
+      <%= render @search.users %>
+    <%end %>
+  </div>
+</div>
 
-<% unless @search.organizations == nil %>
-  <%= render @search.organizations %>
-<%end %>
+
+
+<div class="text-center">
+  <div class="w-50 pt-2 mx-auto mb-4 card page-background">
+    <h3 class="text-center pt-1">
+      Events Results
+    </h3>
+    <% if @search.events.count == 1 %>
+      <strong class="pt-1 mb-3">There is <%=@search.events.count %> event matching the search!</strong>
+
+    <% else %>
+      <strong class="pt-1 mb-3">There are <%=@search.events.count %> events matching the search!</strong>
+    <% end  %>
+    <% if @search.events.count != 0 %>
+      <%= render @search.events %>
+    <%end %>
+  </div>
+</div>
+
+
+
+<div class="text-center">
+  <div class="w-50 pt-2 mx-auto mb-4 card page-background">
+    <h3 class="text-center pt-1">
+      Organization Results
+    </h3>
+    <% if @search.organizations.count == 1 %>
+      <strong class="pt-1 mb-3">There is <%=@search.organizations.count %> organizations matching the search!</strong>
+
+      <% else %>
+      <strong class="pt-1 mb-3">There are <%=@search.organizations.count %> organizations matching the search!</strong>
+      <% end  %>
+
+    <% if @search.organizations.count != 0 %>
+      <%= render @search.organizations %>
+    <%end %>
+  </div>
+</div>
