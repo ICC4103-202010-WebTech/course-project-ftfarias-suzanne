@@ -1,6 +1,11 @@
 <div>
   <%= form_with model: organization, local: true do |form| %>
     <%= errors_for organization%>
+
+    <% if organization.organization_administrator_id == nil %>
+      <%= form.hidden_field :organization_administrator_id, value: 1%>
+      <%end %>
+
     <div class="banner-img pt-2">
       <% if @organization.banner_picture.attached? %>
         <%= image_tag(@organization.banner_picture , class: "card-img-top", width: "100%", height: "200px", background: "#55595c", color: "#eceeef")%>

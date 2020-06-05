@@ -1,14 +1,11 @@
-<h1 id="new_event">New Event</h1>
-
-<div id="new_event">
-  <label for="Name">Name:</label>
-  <input type="text" id="name" name="name"><br><br>
-  <label for="Description">Description:</label>
-  <input type="text" id="description" name="description"><br><br>
-  <label for="Location">Location:</label>
-  <input type="text" id="location" name="location"><br><br>
-  <label for="Public/Private">Event Type:</label>
-  <input type="text" id="publicEvent" name="publicEvent"><br><br>
-  <button class="button">Upload Image</button>
-  <button class="button"> <%= link_to "Create" , root_path%></button>
+<div class="ml-0 mt-3 text-center">
+  <h2>Create New Event</h2>
 </div>
+<div class="ml-0 mt-2 text-center">
+  <p>Please enter the required information to create a new event:</p>
+</div>
+<%= render partial: "form",
+           locals: {
+               event: @event,
+               submit_btn_text: "Create"
+           } %>

@@ -2,6 +2,8 @@
 
 <div class="text-center">
   <h3 class="big_title">Events</h3>
+
+  <a class="big_title badge badge-pill bg-primary text-light mb-4" <%= link_to "Create New Event",new_event_path %></a>
   <% @events.each do |event| %>
     <div class="card mb-4 shadow-sm mx-auto w-50">
       <div class="card-header">

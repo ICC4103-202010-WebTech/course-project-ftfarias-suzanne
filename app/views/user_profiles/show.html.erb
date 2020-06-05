@@ -6,9 +6,9 @@
       <div class="col-md-4 ml-0">
         <div class="profile-img ">
           <% if @user_profile.avatar.attached? %>
-            <%= link_to image_tag(@user_profile.avatar, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
+            <%= image_tag(@user_profile.avatar, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
           <% else %>
-            <%= link_to image_tag("thumbnail.svg", class: "card-img-top", height: "150px", background:"#55595c", color: "#eceeef") %>
+            <%= image_tag("thumbnail.svg", class: "card-img-top", height: "150px", background:"#55595c", color: "#eceeef") %>
           <% end %>
         </div>
       </div>
@@ -121,6 +121,9 @@
           <div class="tab-pane fade" id="created_events" role="tabpanel" aria-labelledby="created_events-tab">
             <div class="row">
               <div class="text-center">
+                <% if @user_profile.user.event_creator.events.any? == false %>
+                  <p class="ml-3">This user hasn't created any events yet!</p>
+                  <%else %>
                 <% @user_profile.user.event_creator.events.each do |event|%>
                   <div class="col-md-13">
                     <div class="card mb-4 shadow-sm mx-auto">
@@ -135,6 +138,7 @@
                     </div>
                   </div>
                 <% end %>
+                  <%end %>
               </div>
             </div>
           </div>

@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true , format: {with:/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
   after_create :create_mailbox
+  after_create :create_event_creator
 
   private
   #Function to create the user mailbox automatically
@@ -19,10 +20,8 @@ class User < ApplicationRecord
     Mailbox.create(user_id: self.id)
   end
 
-  def self.search(search)
-    if search
-      
-    end
+  def create_event_creator
+    EventCreator.create(user_id: self.id)
   end
 
 end

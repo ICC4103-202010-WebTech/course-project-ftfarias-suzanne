@@ -71,6 +71,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.fetch(:organization, {}).permit(:name, :description, :banner_picture, :org_picture, pdf: [], pictures: [], videos: [])
+      params.fetch(:organization, {}).permit(:name, :description, :banner_picture, :organization_administrator_id, :org_picture, pdf: [], pictures: [], videos: [])
     end
 end

@@ -242,3 +242,11 @@ p.title-para {
   from { background-position: 0 0; }
   to { background-position: -400px 0; }
 }
+a.big_title {
+  font-size: 1em;
+  color: #212121;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+  font-weight: 700;
+}

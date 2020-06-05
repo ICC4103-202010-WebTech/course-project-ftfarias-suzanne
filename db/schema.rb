@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_073954) do
+ActiveRecord::Schema.define(version: 2020_06_05_014815) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -134,15 +134,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_073954) do
     t.datetime "possiblestartdate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "start_date_poll_id"
-    t.index ["start_date_poll_id"], name: "index_start_date_options_on_start_date_poll_id"
-  end
-
-  create_table "start_date_polls", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "event_id"
-    t.index ["event_id"], name: "index_start_date_polls_on_event_id"
+    t.index ["event_id"], name: "index_start_date_options_on_event_id"
   end
 
   create_table "system_administrators", force: :cascade do |t|
@@ -198,8 +191,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_073954) do
   add_foreign_key "organizations", "organization_administrators"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "event_guests"
-  add_foreign_key "start_date_options", "start_date_polls"
-  add_foreign_key "start_date_polls", "events"
+  add_foreign_key "start_date_options", "events"
   add_foreign_key "system_administrators", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "users", "organizations"
