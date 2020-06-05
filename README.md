@@ -9,7 +9,15 @@ a) rake db:migrate
    rake db:seed
 
 b) rake db:setup
+******************************************************************************************
+Assignment 3
 
+We've managed to implement all the required features that were asked, except for the invitation and a functional voting system.
+- For creating an comment, event and organization, as we dont have a log in implementation yet, all the comments are made by the same person.
+- We implemented the operation delete user, but if the user of id=1 is removed, nothing will be shown, this is because as we don´t have a log in implementation, everything that our application shows is linked to this user (It's like the user of the id=1 is the logged in).
+- Also, we didn't implemented the admin namespace and routes.
+
+Disclaimer: We are aware that we don´t have consistency with the wireframes of the assignment 1.1, this is because we think that the previous model had flaws and we wanted to correct them and do them better.
 ******************************************************************************************
 Assignment 2
 

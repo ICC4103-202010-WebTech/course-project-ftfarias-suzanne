@@ -69,6 +69,7 @@
           </div>
           <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row">
+              <button class="comment-create page-background ml-4"><%= link_to "Create Comment", new_comment_path(event_id:@event.id) , class: "comment-create mr-1 text-info"%></button>
               <% @event_comments.each do |comment| %>
                 <% @replies = comment.replies %>
                 <div class="col-md-10">
@@ -80,7 +81,7 @@
                             <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
                           </div>
                           <div class="col-md-10">
-                            <p><u><%= comment.event_guest.user.user_profile.username%></u></p>
+                            <p><u><%= link_to comment.event_guest.user.user_profile.username, comment.event_guest.user.user_profile %></u></p>
                             <div class="clearfix"></div>
                             <p><%= comment.message %></p>
                             <p class="text-secondary text-center small"><%= comment.created_at %></p>
@@ -88,6 +89,8 @@
                               <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
                             </p>
                           </div>
+                          <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(event_id:@event.id) , class: "comment-create mr-1 text-info"%></button>
+                          <button class="comment-delete page-background mb-0"><%= link_to 'Delete Comment', comment_path(comment), method: :delete, class: "text-danger",data: { confirm: 'Are you sure?' } %> </button>
                         </div>
                         <% @replies.each do |reply| %>
                           <div class="card card-inner">
@@ -97,7 +100,7 @@
                                   <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
                                 </div>
                                 <div class="col-md-10">
-                                  <p><u><%= reply.event_guest.user.user_profile.username%></u></p>
+                                  <p><u><%= link_to reply.event_guest.user.user_profile.username, reply.event_guest.user.user_profile%></u></p>
                                   <p><%= reply.message %></p>
                                   <p class="text-secondary text-center small"><%= reply.created_at %></p>
                                 </div>

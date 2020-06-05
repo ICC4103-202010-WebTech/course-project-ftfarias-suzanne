@@ -250,3 +250,30 @@ a.big_title {
   text-align: center;
   font-weight: 700;
 }
+
+.notice {
+  border: solid 4px #26722D;
+  background-color: #A4E7A0;
+}
+
+.comment-create{
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  padding: 2%;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
+  background: none;
+}
+
+.comment-delete{
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  padding: 2%;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
+  background: none;
+}
