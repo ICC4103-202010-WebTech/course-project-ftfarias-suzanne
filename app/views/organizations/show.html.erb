@@ -69,7 +69,7 @@
             <div class="row">
               <% @members.each do |member|%>
                 <div class="col-md-10">
-                  <p> <i class="fas fa-user mr-1 text-dark"></i><%= link_to member.user_profile.username , member.user_profile %></p>
+                  <p> <i class="fas fa-user mr-1 text-dark"></i><%= link_to member.username , member %></p>
                 </div>
               <% end %>
             </div>

@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<% if user_signed_in? %>
 <div class="text-center">
   <h3 class="big_title pb-2">Your Upcoming Events</h3>
   <% @upcoming_events.each do |upcoming_event| %>
@@ -38,3 +39,4 @@
     </div>
   <% end %>
 </div>
+<%end %>

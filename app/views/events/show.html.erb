@@ -62,7 +62,7 @@
             <div class="row">
               <% @event.event_guests.each do |guest| %>
                 <div class="col-md-10">
-                  <p> <i class="fas fa-user mr-1 text-dark"></i><%= link_to guest.user.user_profile.username , guest.user.user_profile %></p>
+                  <p> <i class="fas fa-user mr-1 text-dark"></i><%= link_to guest.user.username , guest.user %></p>
                 </div>
               <% end %>
             </div>
@@ -81,7 +81,7 @@
                             <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
                           </div>
                           <div class="col-md-10">
-                            <p><u><%= link_to comment.event_guest.user.user_profile.username, comment.event_guest.user.user_profile %></u></p>
+                            <p><u><%= link_to comment.event_guest.user.username, comment.event_guest.user %></u></p>
                             <div class="clearfix"></div>
                             <p><%= comment.message %></p>
                             <p class="text-secondary text-center small"><%= comment.created_at %></p>
@@ -100,7 +100,7 @@
                                   <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
                                 </div>
                                 <div class="col-md-10">
-                                  <p><u><%= link_to reply.event_guest.user.user_profile.username, reply.event_guest.user.user_profile%></u></p>
+                                  <p><u><%= link_to reply.event_guest.user.username, reply.event_guest.user%></u></p>
                                   <p><%= reply.message %></p>
                                   <p class="text-secondary text-center small"><%= reply.created_at %></p>
                                 </div>

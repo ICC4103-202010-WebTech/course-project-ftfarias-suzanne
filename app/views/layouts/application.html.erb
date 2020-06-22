@@ -28,15 +28,22 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><%=link_to "Events",events_path, class: "nav-link text-light"%></li>
         <li class="nav-item"><%=link_to "Organizations",organizations_path, class: "nav-link text-light"%> </li>
-        <li class="nav-item"><%=link_to "Your Profile", "/users/1", class: "nav-link text-light" %></li>
+        <% if user_signed_in? %>
+        <li class="nav-item"><%=link_to "Your Profile", current_user, class: "nav-link text-light" %></li>
+          <%end %>
         <li class="nav-item"><%= link_to "Mailbox","/mailboxes/1", class: "nav-link text-light"%></li>
         <li class="nav-item">
         </li>
       </ul>
       <form class="form-inline  my-lg-0">
-        <i class="fas fa-user-circle text-light fa-2x"></i>
-        <a class="nav-item"><%= link_to @user.username , "/users/1", class: "nav-link text-light"%></a>
-        <a class="nav-item"><%= link_to "Logout", "/logout", class: "nav-link text-light"%></a>
+        <% if user_signed_in? %>
+          <i class="fas fa-user-circle text-light fa-2x"></i>
+        <a class="nav-item"><%= link_to current_user.username , current_user, class: "nav-link text-light"%></a>
+          <a class="nav-item"><%= link_to "Logout", "/users/sign_out", method: :delete, class: "nav-link text-light"%></a>
+          <%else %>
+          <a class="nav-item"><%= link_to "Sign in" , "/users/sign_in", class: "nav-link text-light"%></a>
+          <a class="nav-item"><%= link_to "Sign Up" , "/users/sign_up", class: "nav-link text-light"%></a>
+          <%end %>
       </form>
     </div>
   </nav>
@@ -45,6 +52,9 @@
 
 <div>
   <main>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+<!--    <p><%#= render partial: "users/user", object: @current_user %></p>-->
     <%= yield %>
   </main>
 </div>
