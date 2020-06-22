@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user_events= Event.joins(event_guests: :user).where(users: {id: @user.id})
+    @user_organizations = Organization.joins(:users).where(users: {id: @user.id})
   end
 
   # GET /users/new
@@ -69,6 +71,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      params.fetch(:user, {}).permit(:id,:email,:password,:username,:name,:lastname, :bio, :phone, :address, :avatar)
     end
 end

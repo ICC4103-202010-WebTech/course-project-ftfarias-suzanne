@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
   def set_user
-    @userProfile = UserProfile.first
+    @user = User.first
   end
 
 end

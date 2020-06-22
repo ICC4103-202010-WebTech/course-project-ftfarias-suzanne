@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :user_profile, dependent: :destroy
+
   has_one :event_creator, dependent: :destroy
   has_one :organization_administrator,dependent: :destroy
   has_one :system_administrator, dependent: :destroy
@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :event_guests, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true , format: {with:/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  has_one_attached :avatar
+
+  validates :name, :lastname,:address,:bio,:username,:phone ,presence: true
 
   after_create :create_mailbox
   after_create :create_event_creator

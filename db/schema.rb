@@ -145,22 +145,15 @@ ActiveRecord::Schema.define(version: 2020_06_05_014815) do
     t.index ["user_id"], name: "index_system_administrators_on_user_id"
   end
 
-  create_table "user_profiles", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
     t.string "name"
     t.string "lastname"
     t.string "bio"
     t.string "phone"
     t.string "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.string "username"
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "organization_id"
@@ -193,7 +186,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_014815) do
   add_foreign_key "replies", "event_guests"
   add_foreign_key "start_date_options", "events"
   add_foreign_key "system_administrators", "users"
-  add_foreign_key "user_profiles", "users"
   add_foreign_key "users", "organizations"
   add_foreign_key "votes", "event_guests"
   add_foreign_key "votes", "start_date_options"

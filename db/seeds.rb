@@ -8,9 +8,9 @@
 #User.create(email:"sizanni@miuandes.cl",password:"password")
 #User.create(email:"ftfarias@miuandes.cl",password:"password")
 
-User.create(email:"sizanni@miuandes.cl",password:"password")
-User.create(email:"ftfarias@miuandes.cl",password:"password")
-User.create(email:"jbarrientos@miuandes.cl",password:"password")
+User.create(email:"sizanni@miuandes.cl",password:"password",name:"Sebastián",lastname:"Zanni",username:"sZanni14",bio:"usuario1",phone:"991220488",address:"Nuestra Sra del Rosario 360")
+User.create(email:"ftfarias@miuandes.cl",password:"password",name:"Francisco",lastname:"Farias",username:"FcoFarias",bio:"usuario2",phone:"997381923",address:"Av el Tranque 12654")
+User.create(email:"jbarrientos@miuandes.cl",password:"password",name:"Joaquin",lastname:"Barrientos",username:"Bayuyo",bio:"usuario3",phone:"99123123",address:"Rio Simme 5019")
 OrganizationAdministrator.create(user_id:2)
 Organization.create(name:"Grupo4",description:"Equipo Web Tech",picture:"a",bannerpicture:"a",membersnumber:"0",organization_administrator_id:1)
 u1 = User.find_by( email:"sizanni@miuandes.cl")
@@ -22,9 +22,6 @@ u3.organization_id = 1
 u1.save!
 u2.save!
 u3.save!
-UserProfile.create(name:"Sebastián",lastname:"Zanni",username:"sZanni14",bio:"usuario1",phone:"991220488",address:"Nuestra Sra del Rosario 360",user_id:1)
-UserProfile.create(name:"Francisco",lastname:"Farias",username:"FcoFarias",bio:"usuario2",phone:"997381923",address:"Av el Tranque 12654",user_id:2)
-UserProfile.create(name:"Joaquin",lastname:"Barrientos",username:"Bayuyo",bio:"usuario3",phone:"99123123",address:"Rio Simme 5019",user_id:3)
 Event.create(name:"Fonda Uandes",description:"Celebracion 18 Sept",location:"Uandes",picture:"a",publicEvent:true,event_creator_id:1,organization_id:1)
 Event.create(name:"Mea Culpa",description:"Fiesta Mechona",location:"Sala Gente",picture:"a",publicEvent:false,event_creator_id:2,organization_id:1)
 Event.create(name:"Salsa Festival",description:"A music festival with a salsa dance theme.",location:"Sala Omnium",picture:"a",publicEvent:false,event_creator_id:2,organization_id:1)

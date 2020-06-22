@@ -28,14 +28,14 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><%=link_to "Events",events_path, class: "nav-link text-light"%></li>
         <li class="nav-item"><%=link_to "Organizations",organizations_path, class: "nav-link text-light"%> </li>
-        <li class="nav-item"><%=link_to "Your Profile", "/user_profiles/1", class: "nav-link text-light" %></li>
+        <li class="nav-item"><%=link_to "Your Profile", "/users/1", class: "nav-link text-light" %></li>
         <li class="nav-item"><%= link_to "Mailbox","/mailboxes/1", class: "nav-link text-light"%></li>
         <li class="nav-item">
         </li>
       </ul>
       <form class="form-inline  my-lg-0">
         <i class="fas fa-user-circle text-light fa-2x"></i>
-        <a class="nav-item"><%= link_to @userProfile.username , "/user_profiles/1", class: "nav-link text-light"%></a>
+        <a class="nav-item"><%= link_to @user.username , "/users/1", class: "nav-link text-light"%></a>
         <a class="nav-item"><%= link_to "Logout", "/logout", class: "nav-link text-light"%></a>
       </form>
     </div>

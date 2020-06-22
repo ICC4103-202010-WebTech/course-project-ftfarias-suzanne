@@ -1,4 +1,170 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="container emp-profile">
+  <form method="post">
+    <div  id=profile_row class="row m-0 p-0">
+      <div class="col-md-4 ml-0">
+        <div class="profile-img ">
+          <% if @user.avatar.attached? %>
+            <%= image_tag(@user.avatar, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
+          <% else %>
+            <%= image_tag("thumbnail.svg", class: "card-img-top", height: "150px", background:"#55595c", color: "#eceeef") %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h4>
+            <%= @user.name%> <%=@user.lastname%>
+          </h4>
+          <div>
+            <h6 class="text-dark">
+              <i class="fas fa-info-circle"></i>
+              Bio
+            </h6>
+            <h6 class="pl-1"><%= @user.bio%></h6>
+          </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="organizations-tab" data-toggle="tab" href="#organizations" role="tab" aria-controls="organizations" aria-selected="false">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="created_events-tab" data-toggle="tab" href="#created_events" role="tab" aria-controls="created_events" aria-selected="false">Created Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Events</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "Edit Profile", edit_user_path , class: "profile-edit-btn mr-1 text-info"%>
+        <%= link_to 'Delete User', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 pt-4 ml-3">
+        <div class="profile-work">
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-3">
+                <label>Username</label>
+              </div>
+              <div class="col-md-6">
+                <p><%=@user.username %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Full Name</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= @user.name %> <%=@user.lastname %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= @user.email %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Phone</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= @user.phone %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Address</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= @user.address %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="organizations" role="tabpanel" aria-labelledby="organizations-tab">
+            <div class="row">
+              <div class="text-center">
+                <% @user_organizations.each do |organization|%>
+                  <div class="col-md-13">
+                    <div class="card mb-4 shadow-sm mx-auto">
+                      <div class="card-header">
+                        <h3 id="event_org"><%= organization.name %></h3>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Description: <%= organization.description%></p>
+                        <p class="card-text"> <i class="fas fa-users mr-1 fa-lg text-dark"></i> <%= organization.users.count %></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See organization" , organization%></button>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="created_events" role="tabpanel" aria-labelledby="created_events-tab">
+            <div class="row">
+              <div class="text-center">
+                <% if @user.event_creator.events.any? == false %>
+                  <p class="ml-3">This user hasn't created any events yet!</p>
+                <%else %>
+                  <% @user.event_creator.events.each do |event|%>
+                    <div class="col-md-13">
+                      <div class="card mb-4 shadow-sm mx-auto">
+                        <div class="card-header">
+                          <h3 id="event_org"><%= event.name %></h3>
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text">Description: <%= event.description%></p>
+                          <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <%end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+            <div class="row">
+              <div class="text-center">
+                <% @user_events.each do |event|%>
+                  <div class="col-md-13">
+                    <div class="card mb-4 shadow-sm mx-auto">
+                      <div class="card-header">
+                        <h3 id="event_org"><%= event.name %></h3>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Description: <%= event.description%></p>
+                        <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
