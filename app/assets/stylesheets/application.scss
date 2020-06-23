@@ -18,8 +18,18 @@
 
 
 .header{
-  background: -webkit-linear-gradient(left, dodgerblue, black);
+  background: linear-gradient(132deg, dodgerblue, black);
+  background-size: 400% 400%;
+  animation: BackgroundGradient 30s ease infinite;
 }
+
+@keyframes BackgroundGradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+
 
 .form-signin {
   width: 100%;
@@ -209,7 +219,16 @@
 .big-title {
   margin-bottom: 3em;
 }
-h3.big_title {
+h2.big_title {
+  font-size: 3em;
+  color: #212121;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+  font-weight: 700;
+}
+
+h3.big_title{
   font-size: 2em;
   color: #212121;
   text-transform: uppercase;

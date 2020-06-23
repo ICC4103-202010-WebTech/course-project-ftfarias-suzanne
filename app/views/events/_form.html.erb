@@ -2,11 +2,11 @@
   <%= form_with model: event, local: true do |form| %>
     <%= errors_for event%>
     <% if  event.event_creator_id == nil %>
-      <%= form.hidden_field :event_creator_id , value: 1%>
+      <%= form.hidden_field :event_creator_id , value: current_user.event_creator.id%>
     <%end %>
 
     <% if event.organization_id == nil %>
-    <%= form.hidden_field :organization_id , value: 1%>
+    <%= form.hidden_field :organization_id , value: current_user.organization_id%>
       <%end %>
 
     <div class="container emp-profile">
