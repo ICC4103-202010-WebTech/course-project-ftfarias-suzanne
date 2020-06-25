@@ -13,6 +13,10 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.uncountable "logout"
   inflect.uncountable "Logout"
+  inflect.uncountable "AUP"
+  inflect.uncountable "aup"
+  inflect.uncountable "ToS"
+  inflect.uncountable "tos"
   inflect.acronym 'API'
 end
 
