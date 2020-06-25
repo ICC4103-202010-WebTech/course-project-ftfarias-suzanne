@@ -122,9 +122,13 @@
             <div class="row">
               <% if current_user.id != @event.event_creator.user.id %>
                 <% @current_guest = current_user.event_guests.where(event_id: @event.id).first %>
+                <% if @current_guest.nil?%>
+                  <p class="ml-3 mb-3 text-danger"> You need to be an event guest to vote!</p>
+                  <%else %>
                 <% if @current_guest.vote.present? %>
                 <p class="ml-3 mb-3 text-success"> You already voted for option <%=@event.start_date_options.index(@current_guest.vote.start_date_option) +1 %>!</p>
                 <%end %>
+                  <%end %>
                 <%@count = 1 %>
                 <% @event.start_date_options.each do |option| %>
                 <div class="col-md-10 mb-3">
