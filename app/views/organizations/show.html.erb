@@ -42,13 +42,14 @@
         </div>
       </div>
       <div class="col-md-2">
+        <% if @organization.organization_administrator.user_id == current_user.id %>
         <div class="row">
           <%= link_to "Edit Organization", edit_organization_path , class: "profile-edit-btn mr-1 text-info"%>
         </div>
         <div class="row">
           <%= link_to 'Delete Organization', organization_path(@organization), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 pr-0 text-danger"%>
-
         </div>
+        <% end %>
         </div>
     </div>
     <div class="row">
@@ -77,20 +78,35 @@
             <div class="row">
               <div class="text-center">
                 <% @organization_events.each do |event|%>
-                  <% if event.publicEvent == true %>
-                  <div class="col-md-14">
-                    <div class="card mb-4 shadow-sm mx-auto">
-                      <div class="card-header">
-                        <h3 id="event_org"><%= event.name %></h3>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Description: <%= event.description%></p>
-                        <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
-                        <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                  <% if @organization.id == current_user.organization_id %>
+                    <div class="col-md-14">
+                      <div class="card mb-4 shadow-sm mx-auto">
+                        <div class="card-header">
+                          <h3 id="event_org"><%= event.name %></h3>
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text">Description: <%= event.description%></p>
+                          <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                    <%end %>
+                  <% else %>
+                    <% if event.publicEvent == true %>
+                    <div class="col-md-14">
+                      <div class="card mb-4 shadow-sm mx-auto">
+                        <div class="card-header">
+                          <h3 id="event_org"><%= event.name %></h3>
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text">Description: <%= event.description%></p>
+                          <p class="card-text"> <i class="fas fa-location-arrow mr-1 fa-lg text-dark"></i> <%= event.location %></p>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"> <%= link_to "See event" , event%></button>
+                        </div>
+                      </div>
+                    </div>
+                    <% end %>
+                  <%end %>
                 <% end %>
               </div>
             </div>
