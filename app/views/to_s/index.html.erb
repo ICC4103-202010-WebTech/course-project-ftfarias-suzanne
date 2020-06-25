@@ -1,62 +1,5 @@
-<html>
-<head>
-  <title>CourseProjectFtfariasSizanni</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
 
 <body class="d-flex flex-column h-100 page-background">
-<header class="header text-center mt-0">
-  <div>
-    <h2 class="big_title pt-2">
-      <a class="text-light" <%= link_to "Teemo Events", root_path %></a>
-    </h2>
-    <% if user_signed_in? %>
-      <div class="md-form mt-0 pb-2">
-        <%= link_to "Advanced Search", new_search_path, class: "text-light" %><i class="fas fa-search text-light ml-2"></i>
-      </div>
-    <%end %>
-  </div>
-
-
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExample03">
-      <% if user_signed_in? %>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><%=link_to "Events",events_path, class: "nav-link text-light"%></li>
-          <li class="nav-item"><%=link_to "Organizations",organizations_path, class: "nav-link text-light"%> </li>
-          <% if user_signed_in? %>
-            <li class="nav-item"><%=link_to "Your Profile", current_user, class: "nav-link text-light" %></li>
-          <%end %>
-          <li class="nav-item"><%= link_to "Mailbox",current_user.mailbox, class: "nav-link text-light"%></li>
-          <li class="nav-item">
-          </li>
-        </ul>
-      <%end %>
-
-      <% if user_signed_in? %>
-        <form class="form-inline my-lg-0">
-          <i class="fas fa-user-circle text-light fa-2x"></i>
-          <a class="nav-item"><%= link_to current_user.username , current_user, class: "nav-link text-light"%></a>
-          <a class="nav-item"><%= link_to "Logout", "/users/sign_out", method: :delete, class: "nav-link text-light"%></a>
-        </form>
-      <% else %>
-        <form class="form-inline mx-auto my-lg-0">
-          <a class="nav-item"><%= link_to "Sign in" , "/users/sign_in", class: "nav-link text-light"%></a>
-          <a class="nav-item"><%= link_to "Sign Up" , "/users/sign_up", class: "nav-link text-light"%></a>
-        </form>
-      <%end %>
-
-    </div>
-  </nav>
-</header>
-
 <div class="mt-1">
 <h1 class="text-center">Website Terms and Conditions of Use</h1>
 
@@ -107,16 +50,4 @@
 <p>Any claim related to Teemo Events's Website shall be governed by the laws of cl without regards to its conflict of law provisions.</p>
 </div>
 
-<footer class="footer bg-dark text-light mt-auto py-2">
-  <div class="container">
-    <p class="float-right pt-3">
-      <a class="text-light" href="#">Back to top</a>
-    </p>
-    <h4>Contact Information</h4>
-    <p>teemoevents@gmail.com</p>
-    <a class="row"><%= link_to "Acceptable Use Policy", "/aup"%></a>
-    <a class="row"><%= link_to "Terms of Service", "/to_s"%></a>
-  </div>
-</footer>
 </body>
-</html>
