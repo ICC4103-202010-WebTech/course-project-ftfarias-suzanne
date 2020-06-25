@@ -126,7 +126,7 @@
 
                     <% @organization.pictures.each do |picture| %>
                       <div class="mb-3">
-                        <%= link_to picture.blob.filename, url_for(picture), class: "text-info" %>
+                        <%= link_to image_tag(picture, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
                       </div>
                     <%end %>
                   <% else %>

@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   resources :votes, defaults: { format: :html}
   resource :logout, defaults: { format: :html}
   resources :searches
+  resources :messages, defaults: {format: :html}
 
 end

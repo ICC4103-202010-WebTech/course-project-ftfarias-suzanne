@@ -13,8 +13,8 @@ class Search < ApplicationRecord
 
   private
   def find_users
-    users = UserProfile.order(:name)
-    users = UserProfile.where("name LIKE ? OR username LIKE ?", "%#{keywords}%","%#{keywords}%") if keywords.present?
+    users = User.order(:name)
+    users = User.where("name LIKE ? OR username LIKE ?", "%#{keywords}%","%#{keywords}%") if keywords.present?
     users
   end
 

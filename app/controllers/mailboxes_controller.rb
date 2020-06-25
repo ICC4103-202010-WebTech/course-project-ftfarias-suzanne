@@ -11,6 +11,7 @@ class MailboxesController < ApplicationController
   # GET /mailboxes/1.json
   def show
     @invitations = @mailbox.invitations
+    @messages = @mailbox.messages
   end
 
   # GET /mailboxes/new

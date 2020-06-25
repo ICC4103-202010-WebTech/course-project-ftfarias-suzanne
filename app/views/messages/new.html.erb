@@ -1,0 +1,83 @@
+<% if @mailbox.nil? %>
+
+<div class="ml-0 mt-3 text-center">
+  <h2>New Message</h2>
+</div>
+
+<div>
+  <%= form_with model: @message, local: true do |form| %>
+    <%= errors_for @message%>
+    <%= form.hidden_field :user_id , value: @user.id%>
+
+    <div class="container emp-profile2">
+      <form method="post">
+        <div  id=profile_row class="row">
+          <div class="col-md-3 mx-auto">
+            <div class="profile-head">
+              <div>
+                <h6>
+                  <div class="form-group">
+                    <i class="fas fa-info-circle"> </i>
+
+                    <%= form.label :Users%>
+                    <%= form.collection_select :mailbox_id, User.all.order(:username),:id,:username, include_blank: true ,class: "form-control"%>
+                  </div>
+                </h6>
+              </div>
+              <div>
+                <h6>
+                  <div class="form-group">
+                    <i class="fas fa-info-circle"> </i>
+                    <%= form.label :message%>
+                    <%= form.text_field :message, class: "form-control"%>
+                  </div>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="form-group mt-2 text-center">
+        <%= form.submit "Send Message", class: ["btn", "btn-primary"] %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%else %>
+  <div class="ml-0 mt-3 text-center">
+    <h2>Message reply</h2>
+  </div>
+
+  <div>
+    <%= form_with model: @message, local: true do |form| %>
+      <%= errors_for @message%>
+      <%= form.hidden_field :user_id , value: @user.id%>
+      <%= form.hidden_field :mailbox_id, value: @mailbox.id %>
+
+      <div class="container emp-profile2">
+        <form method="post">
+          <div  id=profile_row class="row">
+            <div class="col-md-3 mx-auto">
+              <div class="profile-head">
+                <div>
+                  <h6>
+                    <div class="form-group mt-3">
+                      <i class="fas fa-info-circle"> </i>
+                      <%= form.label :Reply%>
+                      <%= form.text_field :message, class: "form-control"%>
+                    </div>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="form-group text-center">
+          <%= form.submit "Send Reply", class: ["btn", "btn-primary"] %>
+          <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<%end %>

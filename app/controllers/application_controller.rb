@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
     # elsif current_admin
     #   current_admin
     else
-      Customer.new
+      User.new
     end
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :lastname , :username,:bio,:address,:phone])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :lastname ,:username,:bio,:address,:phone, :avatar])
   end
 
 end

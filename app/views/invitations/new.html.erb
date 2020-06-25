@@ -1,5 +1,44 @@
-<h1>New Invitation</h1>
+<div class="ml-0 mt-3 text-center">
+  <h2>Send New Invitation</h2>
+</div>
 
-<%= render 'form', invitation: @invitation %>
+<div>
+  <%= form_with model: @invitation, local: true do |form| %>
+    <%= errors_for @invitation%>
+    <%= form.hidden_field :event_id , value: @event.id%>
 
-<%= link_to 'Back', invitations_path %>
+    <div class="container emp-profile2">
+      <form method="post">
+        <div  id=profile_row class="row">
+          <div class="col-md-3 mx-auto">
+            <div class="profile-head">
+              <div>
+                <h6>
+                  <div class="form-group mt-5">
+                    <i class="fas fa-info-circle"> </i>
+                    <% @uninvited_users= [] %>
+                    <% User.all.each do |user| %>
+                    <% @user_in_event= user.event_guests.where(event_id: @event.id).first %>
+                      <% if @user_in_event.nil? %>
+                        <% if user.event_creator != @event.event_creator %>
+                        <% @uninvited_users.push(user) %>
+                          <%end %>
+                      <%end %>
+                      <%end %>
+                    <%= form.label :Uninvited_users%>
+                    <%= form.collection_select :mailbox_id, @uninvited_users,:id,:username, include_blank: true ,class: "form-control"%>
+                  </div>
+                </h6>
+              </div>
+                    <%= form.hidden_field :message, value: "You are invited to the event",class: "form-control"%>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="form-group mt-2 text-center">
+        <%= form.submit "Invite User", class: ["btn", "btn-primary"] %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      </div>
+    </div>
+  <% end %>
+</div>

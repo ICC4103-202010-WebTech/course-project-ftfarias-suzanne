@@ -15,6 +15,8 @@ class EventGuestsController < ApplicationController
   # GET /event_guests/new
   def new
     @event_guest = EventGuest.new
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
   end
 
   # GET /event_guests/1/edit
@@ -28,7 +30,7 @@ class EventGuestsController < ApplicationController
 
     respond_to do |format|
       if @event_guest.save
-        format.html { redirect_to @event_guest, notice: 'Event guest was successfully created.' }
+        format.html { redirect_to @event_guest.event, notice: 'Welcome to the event.' }
         format.json { render :show, status: :created, location: @event_guest }
       else
         format.html { render :new }
@@ -62,13 +64,13 @@ class EventGuestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event_guest
-      @event_guest = EventGuest.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event_guest
+    @event_guest = EventGuest.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def event_guest_params
-      params.fetch(:event_guest, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def event_guest_params
+    params.fetch(:event_guest, {}).permit(:id,:user_id, :event_id)
+  end
 end

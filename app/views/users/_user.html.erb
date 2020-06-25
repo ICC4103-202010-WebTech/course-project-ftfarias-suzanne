@@ -1,7 +1,13 @@
-<% if user_signed_in? %>
-  <div class="card mt-4">
-    <div class="card-body">
-      Welcome, <%= current_user.username %>
-    </div>
-  </div>
-<% end %>
+<div class="card page-background mx-auto w-50 mt-2 mb-2">
+  <h3> <i class="fas fa-user-circle mr-2"></i><%= link_to user.username, user, class: "text-info" %></h3>
+
+  <% if user.event_creator.events.count != 0 %>
+    <p>This user has created the following events: </p>
+    <% user.event_creator.events.each do |event|%>
+      <h6><%= link_to event.name , event, class: "text-info"%></h6>
+    <% end %>
+
+  <%else %>
+    <p>This user hasn't created any events </p>
+  <%end %>
+</div>

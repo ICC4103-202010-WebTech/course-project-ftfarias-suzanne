@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one :organization
   has_many :invitations
   has_many :event_guests, dependent: :destroy
+  has_many :messages
 
   validates :email, presence: true, uniqueness: true , format: {with:/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   has_one_attached :avatar

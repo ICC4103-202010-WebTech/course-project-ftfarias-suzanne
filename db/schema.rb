@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_010420) do
+ActiveRecord::Schema.define(version: 2020_06_25_055225) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 2020_06_22_010420) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_mailboxes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "mailbox_id"
+    t.integer "user_id"
+    t.index ["mailbox_id"], name: "index_messages_on_mailbox_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "organization_administrators", force: :cascade do |t|
@@ -191,6 +201,8 @@ ActiveRecord::Schema.define(version: 2020_06_22_010420) do
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "mailboxes"
   add_foreign_key "mailboxes", "users"
+  add_foreign_key "messages", "mailboxes"
+  add_foreign_key "messages", "users"
   add_foreign_key "organization_administrators", "users"
   add_foreign_key "organizations", "organization_administrators"
   add_foreign_key "replies", "comments"

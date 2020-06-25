@@ -15,6 +15,7 @@ class InvitationsController < ApplicationController
   # GET /invitations/new
   def new
     @invitation = Invitation.new
+    @event = Event.find(params[:event_id])
   end
 
   # GET /invitations/1/edit
@@ -28,7 +29,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to @invitation, notice: 'Invitation was successfully created.' }
+        format.html { redirect_to @invitation.event, notice: 'Invitation was successfully created.' }
         format.json { render :show, status: :created, location: @invitation }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class InvitationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def invitation_params
-      params.fetch(:invitation, {})
+      params.fetch(:invitation, {}).permit(:id, :message, :mailbox_id, :event_id)
     end
 end

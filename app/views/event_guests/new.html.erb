@@ -1,5 +1,20 @@
-<h1>New Event Guest</h1>
+<div class="mt-5">
+  <div class="mx-auto">
+    <h3 class="big_title">You accepted the event invitation successfully!</h3>
+  </div>
 
-<%= render 'form', event_guest: @event_guest %>
+  <div class="mt-5">
+    <%= form_with model: @event_guest, local: true do |form| %>
+      <%= errors_for @event_guest%>
+      <div class="container mx-auto">
+        <%= form.hidden_field :user_id, value: @user.id %>
+        <%= form.hidden_field :event_id, value: @event.id %>
+        <div class="form-group mt-2 text-center">
+          <%= form.submit "Go to Event", class: ["btn", "btn-primary"] %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to 'Back', event_guests_path %>
+
