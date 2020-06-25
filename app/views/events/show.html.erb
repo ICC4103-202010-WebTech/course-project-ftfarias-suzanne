@@ -10,7 +10,6 @@
           <% end %>
         </div>
       </div>
-      <p> <%= @event.finalVotingDay %></p>
       <div class="col-md-6">
         <div class="profile-head">
           <h4>
@@ -30,12 +29,11 @@
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="profile" aria-selected="false">Comments</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#start_date_options" role="tab" aria-controls="profile" aria-selected="false">Date Options</a>
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#start_date_poll" role="tab" aria-controls="profile" aria-selected="false">Start Date Poll</a>
             </li>
           </ul>
         </div>
       </div>
-      <p> <%= @event.start_date_options.count %></p>
       <div class="col-md-2">
         <% if current_user.id==@event.event_creator.user.id %>
         <div class="row">
@@ -120,13 +118,35 @@
               <% end %>
             </div>
           </div>
-          <div class="tab-pane fade" id="start_date_options" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="tab-pane fade" id="start_date_poll" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row">
-              <% @event.start_date_options.each do |option| %>
-                <div class="col-md-10">
+              <% if current_user.id != @event.event_creator.user.id %>
+                <% @current_guest = current_user.event_guests.where(event_id: @event.id).first %>
+                <% if @current_guest.vote.present? %>
+                <p class="ml-3 mb-3 text-success"> You already voted for option <%=@event.start_date_options.index(@current_guest.vote.start_date_option) +1 %>!</p>
+                <%end %>
+                <%@count = 1 %>
+                <% @event.start_date_options.each do |option| %>
+                <div class="col-md-10 mb-3">
+                  <p class="text-dark">Option <%=@count%></p>
                   <p> <i class="fas fa-calendar-alt mr-1 text-dark"></i><%= option.possiblestartdate%></p>
+                  <p>Current Votes: <%=option.votes.count %></p>
+                  <% if @current_guest.nil? == false %>
+                    <% unless @current_guest.vote.present? %>
+                      <a class="big_title badge badge-pill bg-primary text-light mb-4" <%=link_to "Vote", new_vote_path(event_guest_id: @current_guest.id, start_date_option_id:option.id) %></a>
+                      <%end %>
+                    <%end %>
                 </div>
+                  <%@count+=1 %>
               <% end %>
+                <%else %>
+                <% @event.start_date_options.each do |option| %>
+                  <div class="col-md-10 mb-3">
+                    <p> <i class="fas fa-calendar-alt mr-1 text-dark"></i><%= option.possiblestartdate%></p>
+                    <p>Current Votes: <%=option.votes.count %></p>
+                  </div>
+                  <%end %>
+                <%end %>
             </div>
           </div>
         </div>

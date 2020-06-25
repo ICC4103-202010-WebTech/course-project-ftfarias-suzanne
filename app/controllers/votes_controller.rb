@@ -15,6 +15,8 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
+    @start_date_option = StartDateOption.find(params[:start_date_option_id])
+    @event_guest = EventGuest.find(params[:event_guest_id])
   end
 
   # GET /votes/1/edit
@@ -28,7 +30,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+        format.html { redirect_to @vote.start_date_option.event, notice: 'Vote was successfully created.' }
         format.json { render :show, status: :created, location: @vote }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class VotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.fetch(:vote, {})
+      params.fetch(:vote, {}).permit(:id,:event_guest_id, :start_date_option_id)
     end
 end

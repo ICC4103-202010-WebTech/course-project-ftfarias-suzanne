@@ -1,5 +1,19 @@
-<h1>New Vote</h1>
+<div class="mt-5">
+  <div class="mx-auto">
+    <h3 class="big_title">Voting for date <%=@start_date_option.possiblestartdate %></h3>
+  </div>
 
-<%= render 'form', vote: @vote %>
-
-<%= link_to 'Back', votes_path %>
+  <div class="mt-5">
+    <%= form_with model: @vote, local: true do |form| %>
+      <%= errors_for @vote%>
+      <div class="container mx-auto">
+        <%= form.hidden_field :event_guest_id, value: @event_guest.id %>
+        <%= form.hidden_field :start_date_option_id, value: @start_date_option.id %>
+        <div class="form-group mt-2 text-center">
+          <%= form.submit "Vote", class: ["btn", "btn-primary"] %>
+          <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
