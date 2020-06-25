@@ -10,6 +10,7 @@
           <% end %>
         </div>
       </div>
+      <p> <%= @event.finalVotingDay %></p>
       <div class="col-md-6">
         <div class="profile-head">
           <h4>
@@ -34,6 +35,7 @@
           </ul>
         </div>
       </div>
+      <p> <%= @event.start_date_options.count %></p>
       <div class="col-md-2">
         <% if current_user.id==@event.event_creator.user.id %>
         <div class="row">

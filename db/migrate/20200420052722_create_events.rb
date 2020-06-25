@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :location
       t.string :picture
       t.boolean :publicEvent
-
+      t.datetime :finalVotingDay
       t.timestamps
     end
   end

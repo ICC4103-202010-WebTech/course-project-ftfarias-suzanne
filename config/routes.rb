@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   resources :organizations, defaults: { format: :html}
   resources :organization_administrators, defaults: { format: :html}
   resources :replies, defaults: { format: :html}
-  resources :start_date_polls, defaults: { format: :html}
   resources :start_date_options, defaults: { format: :html}
   resources :system_administrators, defaults: { format: :html}
   resources :votes, defaults: { format: :html}

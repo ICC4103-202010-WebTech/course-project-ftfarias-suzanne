@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    2.times { @event.start_date_options.build }
   end
 
   # GET /events/1/edit
@@ -70,6 +71,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:id,:name,:description,:location,:public_event,:event_picture, :event_creator_id, :organization_id, start_date_options_attributes: [:id, :possiblestartdate])
+      params.fetch(:event, {}).permit(:id,:name,:description,:location,:public_event,:event_picture, :event_creator_id, :organization_id,:finalVotingDay, start_date_options_attributes: [:id, :possiblestartdate])
     end
 end

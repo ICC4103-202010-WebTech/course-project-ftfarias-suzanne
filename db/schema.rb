@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_055225) do
     t.string "location"
     t.string "picture"
     t.boolean "publicEvent"
+    t.datetime "finalVotingDay"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "event_creator_id"

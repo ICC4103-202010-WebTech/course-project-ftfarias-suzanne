@@ -9,9 +9,18 @@ class Event < ApplicationRecord
   has_many :votes ,through: :start_date_options
 
   accepts_nested_attributes_for :start_date_options
-
   has_one_attached :event_picture
 
+
   validates :name, :location, :description, presence: true
+
+  validate :custom_validation_method_with_message
+
+  def custom_validation_method_with_message
+    if finalVotingDay.blank?
+      errors.add( :_,"Final voting day can't be blank")
+    end
+  end
+
 
 end
