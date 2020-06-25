@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :system_administrators, defaults: { format: :html}
   resources :votes, defaults: { format: :html}
   resource :logout, defaults: { format: :html}
-  resources :searches
+  resources :searches, default: { formart: :html}
   resources :messages, defaults: {format: :html}
-
+  resources :aup, default: { formart: :html}
+  resources :to_s, default: { formart: :html}
 end

@@ -1,0 +1,122 @@
+<html>
+<head>
+  <title>CourseProjectFtfariasSizanni</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="d-flex flex-column h-100 page-background">
+<header class="header text-center mt-0">
+  <div>
+    <h2 class="big_title pt-2">
+      <a class="text-light" <%= link_to "Teemo Events", root_path %></a>
+    </h2>
+    <% if user_signed_in? %>
+      <div class="md-form mt-0 pb-2">
+        <%= link_to "Advanced Search", new_search_path, class: "text-light" %><i class="fas fa-search text-light ml-2"></i>
+      </div>
+    <%end %>
+  </div>
+
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+      <% if user_signed_in? %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><%=link_to "Events",events_path, class: "nav-link text-light"%></li>
+          <li class="nav-item"><%=link_to "Organizations",organizations_path, class: "nav-link text-light"%> </li>
+          <% if user_signed_in? %>
+            <li class="nav-item"><%=link_to "Your Profile", current_user, class: "nav-link text-light" %></li>
+          <%end %>
+          <li class="nav-item"><%= link_to "Mailbox",current_user.mailbox, class: "nav-link text-light"%></li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      <%end %>
+
+      <% if user_signed_in? %>
+        <form class="form-inline my-lg-0">
+          <i class="fas fa-user-circle text-light fa-2x"></i>
+          <a class="nav-item"><%= link_to current_user.username , current_user, class: "nav-link text-light"%></a>
+          <a class="nav-item"><%= link_to "Logout", "/users/sign_out", method: :delete, class: "nav-link text-light"%></a>
+        </form>
+      <% else %>
+        <form class="form-inline mx-auto my-lg-0">
+          <a class="nav-item"><%= link_to "Sign in" , "/users/sign_in", class: "nav-link text-light"%></a>
+          <a class="nav-item"><%= link_to "Sign Up" , "/users/sign_up", class: "nav-link text-light"%></a>
+        </form>
+      <%end %>
+
+    </div>
+  </nav>
+</header>
+
+<div class="mt-1">
+<h1 class="text-center">Website Terms and Conditions of Use</h1>
+
+<h2>1. Terms</h2>
+
+<p>By accessing this Website, accessible from localhost:3000, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law. These Terms of Service has been created with the help of the <a href="https://www.termsofservicegenerator.net">Terms of Service Generator</a> and the <a href="https://www.termsconditionsexample.com">Terms & Conditions Example</a>.</p>
+
+<h2>2. Use License</h2>
+
+<p>Permission is granted to temporarily download one copy of the materials on Teemo Events's Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+
+<ul>
+  <li>modify or copy the materials;</li>
+  <li>use the materials for any commercial purpose or for any public display;</li>
+  <li>attempt to reverse engineer any software contained on Teemo Events's Website;</li>
+  <li>remove any copyright or other proprietary notations from the materials; or</li>
+  <li>transferring the materials to another person or "mirror" the materials on any other server.</li>
+</ul>
+
+<p>This will let Teemo Events to terminate upon violations of any of these restrictions. Upon termination, your viewing right will also be terminated and you should destroy any downloaded materials in your possession whether it is printed or electronic format.</p>
+
+<h2>3. Disclaimer</h2>
+
+<p>All the materials on Teemo Events’s Website are provided "as is". Teemo Events makes no warranties, may it be expressed or implied, therefore negates all other warranties. Furthermore, Teemo Events does not make any representations concerning the accuracy or reliability of the use of the materials on its Website or otherwise relating to such materials or any sites linked to this Website.</p>
+
+<h2>4. Limitations</h2>
+
+<p>Teemo Events or its suppliers will not be hold accountable for any damages that will arise with the use or inability to use the materials on Teemo Events’s Website, even if Teemo Events or an authorize representative of this Website has been notified, orally or written, of the possibility of such damage. Some jurisdiction does not allow limitations on implied warranties or limitations of liability for incidental damages, these limitations may not apply to you.</p>
+
+<h2>5. Revisions and Errata</h2>
+
+<p>The materials appearing on Teemo Events’s Website may include technical, typographical, or photographic errors. Teemo Events will not promise that any of the materials in this Website are accurate, complete, or current. Teemo Events may change the materials contained on its Website at any time without notice. Teemo Events does not make any commitment to update the materials.</p>
+
+<h2>6. Links</h2>
+
+<p>Teemo Events has not reviewed all of the sites linked to its Website and is not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by Teemo Events of the site. The use of any linked website is at the user’s own risk.</p>
+
+<h2>7. Site Terms of Use Modifications</h2>
+
+<p>Teemo Events may revise these Terms of Use for its Website at any time without prior notice. By using this Website, you are agreeing to be bound by the current version of these Terms and Conditions of Use.</p>
+
+<h2>8. Your Privacy</h2>
+
+<p>Please read <a href="https://www.privacypolicygenerator.info/">our Privacy Policy</a>.</p>
+
+<h2>9. Governing Law</h2>
+
+<p>Any claim related to Teemo Events's Website shall be governed by the laws of cl without regards to its conflict of law provisions.</p>
+</div>
+
+<footer class="footer bg-dark text-light mt-auto py-2">
+  <div class="container">
+    <p class="float-right pt-3">
+      <a class="text-light" href="#">Back to top</a>
+    </p>
+    <h4>Contact Information</h4>
+    <p>teemoevents@gmail.com</p>
+    <a class="row"><%= link_to "Acceptable Use Policy", "/aup"%></a>
+    <a class="row"><%= link_to "Terms of Service", "/to_s"%></a>
+  </div>
+</footer>
+</body>
+</html>

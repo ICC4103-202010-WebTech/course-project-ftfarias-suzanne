@@ -22,9 +22,9 @@ u3.organization_id = 1
 u1.save!
 u2.save!
 u3.save!
-Event.create(name:"Fonda Uandes",description:"Celebracion 18 Sept",location:"Uandes",picture:"a",publicEvent:true,event_creator_id:1,organization_id:1,finalVotingDay:nil)
-Event.create(name:"Mea Culpa",description:"Fiesta Mechona",location:"Sala Gente",picture:"a",publicEvent:false,event_creator_id:2,organization_id:1,finalVotingDay:nil)
-Event.create(name:"Salsa Festival",description:"A music festival with a salsa dance theme.",location:"Sala Omnium",picture:"a",publicEvent:false,event_creator_id:2,organization_id:1,finalVotingDay:nil)
+Event.create(name:"Fonda Uandes",description:"Celebracion 18 Sept",location:"Uandes",picture:"a",publicEvent:true,event_creator_id:1,organization_id:1,finalVotingDay:'09-09-2020')
+Event.create(name:"Mea Culpa",description:"Fiesta Mechona",location:"Sala Gente",picture:"a",publicEvent:false,event_creator_id:2,organization_id:1,finalVotingDay:'08-09-2020')
+Event.create(name:"Salsa Festival",description:"A music festival with a salsa dance theme.",location:"Sala Omnium",picture:"a",publicEvent:false,event_creator_id:2,organization_id:1,finalVotingDay:'07-08-2020')
 EventGuest.create(user_id:2,event_id:1)
 EventGuest.create(user_id:3,event_id:1)
 EventGuest.create(user_id:1,event_id:2)
@@ -38,6 +38,8 @@ StartDateOption.create(possiblestartdate:"2020-07-20",event_id:1)
 StartDateOption.create(possiblestartdate:"2020-07-22",event_id:1)
 StartDateOption.create(possiblestartdate:"2020-08-14",event_id:2)
 StartDateOption.create(possiblestartdate:"2020-08-18",event_id:2)
+StartDateOption.create(possiblestartdate:"2020-09-12",event_id:3)
+StartDateOption.create(possiblestartdate:"2020-09-13",event_id:3)
 Vote.create(event_guest_id:1,start_date_option_id:1)
 Vote.create(event_guest_id:2,start_date_option_id:1)
 Vote.create(event_guest_id:3,start_date_option_id:3)
