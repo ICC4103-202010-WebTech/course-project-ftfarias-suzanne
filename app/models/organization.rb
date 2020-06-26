@@ -3,7 +3,6 @@ class Organization < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :users
   before_destroy :kick_users
-
   has_one_attached :banner_picture
   has_one_attached :org_picture
   has_many_attached :pdf

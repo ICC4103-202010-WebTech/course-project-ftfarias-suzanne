@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def current_u
+  def current_user_logged
     if current_user
       current_user
-    # elsif current_admin
-    #   current_admin
+    elsif current_admin
+      current_admin
     else
       User.new
     end

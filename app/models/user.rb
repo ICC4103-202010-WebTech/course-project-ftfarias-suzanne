@@ -4,13 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-
   has_one :event_creator, dependent: :destroy
   has_one :organization_administrator,dependent: :destroy
-  has_one :system_administrator, dependent: :destroy
   has_one :mailbox, dependent: :destroy
   has_many :events
-  has_one :organization
+  belongs_to :organization, optional: true
   has_many :invitations
   has_many :event_guests, dependent: :destroy
   has_many :messages

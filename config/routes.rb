@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_for :admins, controllers: { sessions: 'admins/sessions' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
 
@@ -24,11 +25,9 @@ Rails.application.routes.draw do
   resources :organization_administrators, defaults: { format: :html}
   resources :replies, defaults: { format: :html}
   resources :start_date_options, defaults: { format: :html}
-  resources :system_administrators, defaults: { format: :html}
   resources :votes, defaults: { format: :html}
-  resource :logout, defaults: { format: :html}
-  resources :searches, default: { formart: :html}
+  resources :searches, default: { format: :html}
   resources :messages, defaults: {format: :html}
-  resources :aup, default: { formart: :html}
-  resources :to_s, default: { formart: :html}
+  resources :aup, default: { format: :html}
+  resources :to_s, default: { format: :html}
 end
