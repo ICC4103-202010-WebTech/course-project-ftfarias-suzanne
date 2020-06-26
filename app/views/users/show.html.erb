@@ -1,4 +1,3 @@
-<p id="notice" class="text-center"><%= notice %></p>
 
 <div class="container emp-profile">
   <form method="post">
@@ -46,6 +45,12 @@
         <%= link_to 'Delete User', user_registration_path, method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
         <%= link_to "Change password", edit_user_registration_path, class: "profile-edit-btn mr-1 text-success" %>
       </div>
+        <% elsif admin_signed_in? %>
+        <div class="col-md-2">
+          <%= link_to "Edit Profile", edit_user_path , class: "profile-edit-btn mr-1 text-info"%>
+          <%= link_to 'Delete User', admin_destroy_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
+          <%= link_to "Change password", edit_user_registration_path, class: "profile-edit-btn mr-1 text-success" %>
+        </div>
         <%end %>
     </div>
     <div class="row">

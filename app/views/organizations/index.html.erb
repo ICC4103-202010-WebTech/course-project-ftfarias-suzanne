@@ -1,6 +1,14 @@
 <div class="text-center">
   <h3 class="big_title">Organizations</h3>
+  <% if user_signed_in? %>
+    <% if current_user.organization_administrator.organization_id.nil?%>
   <a class="big_title badge badge-pill bg-primary text-light mb-4" <%= link_to "Create New Organization",new_organization_path %></a>
+      <%else %>
+    <p> You are already an organization administrator of <%=current_user.organization.name %></p>
+      <%end %>
+    <%elsif admin_signed_in?%>
+    <a class="big_title badge badge-pill bg-primary text-light mb-4" <%= link_to "Create New Organization",new_organization_path %></a>
+    <%end %>
   <% @organizations.each do |organization| %>
     <div class="card mb-4 shadow-sm mx-auto w-50">
       <div class="card-header">

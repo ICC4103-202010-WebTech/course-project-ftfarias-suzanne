@@ -18,12 +18,12 @@
           <h6>
             <i class="fas fa-location-arrow mr-1 fa-lg"> </i> <%= @event.location %>
           </h6>
+          <h6>
+            <i class="fas fa-info-circle mr-1 fa-lg"> </i> <%= @event.description %>
+          </h6>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Guests</a>
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Guests</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="profile" aria-selected="false">Comments</a>
@@ -38,7 +38,8 @@
         </div>
       </div>
       <div class="col-md-2">
-        <% if current_user.id==@event.event_creator.user.id %>
+        <% if user_signed_in? %>
+          <% if current_user.id==@event.event_creator.user.id %>
         <div class="row">
           <%= link_to "Edit Event", edit_event_path , class: "profile-edit-btn mr-1 text-info"%>
         </div>
@@ -49,6 +50,15 @@
           <div class="row">
             <%= link_to "Invite Guest", new_invitation_path(event_id:@event.id) , class: "profile-edit-btn mr-1 text-success"%>
           </div>
+            <%end %>
+
+          <% elsif admin_signed_in?%>
+          <div class="row">
+            <%= link_to "Edit Event", edit_event_path , class: "profile-edit-btn mr-1 text-info"%>
+          </div>
+          <div class="row">
+            <%= link_to 'Delete Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
+          </div>
         <% end %>
       </div>
     </div>
@@ -57,14 +67,8 @@
       </div>
       <div class="col-md-8">
         <div class="tab-content profile-tab" id="myTa=bContent">
+
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row">
-              <div class="col-md-6">
-                <p><%= @event.description %></p>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row">
               <% @event.event_guests.each do |guest| %>
                 <div class="col-md-10">
@@ -95,7 +99,7 @@
                               <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
                             </p>
                           </div>
-                          <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(event_id:@event.id) , class: "comment-create mr-1 text-info"%></button>
+                          <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(comment) , class: "comment-create mr-1 text-info"%></button>
                           <button class="comment-delete page-background mb-0"><%= link_to 'Delete Comment', comment_path(comment), method: :delete, class: "text-danger",data: { confirm: 'Are you sure?' } %> </button>
                         </div>
                         <% @replies.each do |reply| %>
@@ -123,6 +127,7 @@
           </div>
           <div class="tab-pane fade" id="start_date_poll" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row">
+              <% if user_signed_in? %>
               <% if current_user.id != @event.event_creator.user.id %>
                 <% @current_guest = current_user.event_guests.where(event_id: @event.id).first %>
                 <% if @current_guest.nil?%>
@@ -131,6 +136,7 @@
                 <% if @current_guest.vote.present? %>
                 <p class="ml-3 mb-3 text-success"> You already voted for option <%=@event.start_date_options.index(@current_guest.vote.start_date_option) +1 %>!</p>
                 <%end %>
+                  <%end %>
                   <%end %>
                 <%@count = 1 %>
                 <% @event.start_date_options.each do |option| %>

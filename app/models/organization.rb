@@ -11,10 +11,22 @@ class Organization < ApplicationRecord
 
 
   validates :description, :name, presence: true
+  before_destroy :update_org_admin_destroy
+  after_create :update_org_admin_create
+
 
   private
   def kick_users
     users=self.users
     users.update_all(organization_id:nil)
+  end
+
+  def update_org_admin_create
+    organization_administrator.update(organization_id:id)
+    organization_administrator.user.update(organization_id:id)
+  end
+
+  def update_org_admin_destroy
+    organization_administrator.update(organization_id:nil)
   end
 end

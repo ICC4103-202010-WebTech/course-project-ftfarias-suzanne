@@ -2,8 +2,10 @@
   <%= form_with model: event, local: true do |form| %>
     <%= errors_for event%>
 
+    <% if user_signed_in? %>
     <%= form.hidden_field :event_creator_id , value: current_user.event_creator.id%>
     <%= form.hidden_field :organization_id , value: current_user.organization_id%>
+      <%end %>
 
 
     <div class="container emp-profile">
@@ -69,7 +71,7 @@
             <div class="tab-content profile-tab" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="row pt-2">
-                  <div class="col-md-3">
+                  <div class="col-md-12">
                     <div class="form-group pt-1">
                       <%= form.label :description%>
                     </div>
@@ -77,6 +79,17 @@
                   <div class="col-md-6">
                     <%= form.text_area :description, class: "form-control" %>
                   </div>
+                  <% if admin_signed_in? %>
+                    <div class="col-md-12">
+                      <%= form.label :event_creator %>
+                      <%= form.collection_select :event_creator_id, User.all,:id,:username, include_blank: true ,class: "form-control"%>
+                    </div>
+
+                    <div class="col-md-12">
+                      <%= form.label :Organization %>
+                      <%= form.collection_select :organization_id, Organization.all,:id,:name, include_blank: true ,class: "form-control"%>
+                    </div>
+                  <%end %>
                 </div>
               </div>
 

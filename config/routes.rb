@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   resources :messages, defaults: {format: :html}
   resources :aup, default: { format: :html}
   resources :to_s, default: { format: :html}
+
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+
 end

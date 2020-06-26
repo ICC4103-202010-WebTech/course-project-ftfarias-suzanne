@@ -2,8 +2,10 @@
   <%= form_with model: organization, local: true do |form| %>
     <%= errors_for organization%>
 
+    <% if user_signed_in?%>
     <% if organization.organization_administrator_id == nil %>
-      <%= form.hidden_field :organization_administrator_id, value: 1%>
+      <%= form.hidden_field :organization_administrator_id, value: current_user.id%>
+      <%end %>
       <%end %>
 
     <div class="banner-img pt-2">
@@ -64,6 +66,15 @@
             <div class="tab-content profile-tab" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="row pt-2">
+                  <% if admin_signed_in? %>
+                    <% @non_org_admins = OrganizationAdministrator.where(organization_id:nil) %>
+                  <div class="col-md-12">
+                    <div class="form-group pt-1">
+                      <%= form.label :Organization_administrator %>
+                      <%= form.collection_select :organization_administrator_id, @non_org_admins,:id,:id, include_blank: true ,class: "form-control"%>
+                    </div>
+                  </div>
+                    <%end %>
                   <div class="col-md-3">
                     <div class="form-group pt-1">
                       <%= form.label :description%>

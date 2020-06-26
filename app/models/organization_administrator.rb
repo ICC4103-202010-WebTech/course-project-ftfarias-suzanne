@@ -1,4 +1,4 @@
 class OrganizationAdministrator < ApplicationRecord
   belongs_to :user
-  has_many :organizations, dependent: :destroy
+  has_one :organization, dependent: :destroy
 end

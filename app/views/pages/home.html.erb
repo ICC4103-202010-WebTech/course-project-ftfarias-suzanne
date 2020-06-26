@@ -38,6 +38,19 @@
   <% end %>
 </div>
 
+
+  <% elsif admin_signed_in? %>
+
+    <div class="container mx-auto text-center">
+      <h3 class="big_title">Welcome ADMIN</h3>
+      <p class="title-para">The current status of Teemo Events is:</p>
+      <div class="text-center">
+        <h4 class="mb-3">Created Events: <%= Event.count %></h4>
+        <h4 class="mb-3">Created Users: <%= User.count %></h4>
+        <h4 class="mb-3">Created Organizations: <%= Organization.count %></h4>
+      </div>
+
+    </div>
   <%else %>
   <div class="big-title mt-5">
     <h3 class="big_title">Welcome to the best events site in the web!</h3>
