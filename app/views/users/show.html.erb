@@ -48,8 +48,7 @@
         <% elsif admin_signed_in? %>
         <div class="col-md-2">
           <%= link_to "Edit Profile", edit_user_path , class: "profile-edit-btn mr-1 text-info"%>
-          <%= link_to 'Delete User', admin_destroy_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
-          <%= link_to "Change password", edit_user_registration_path, class: "profile-edit-btn mr-1 text-success" %>
+          <%= link_to 'Delete User', user_path(@user.id),method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
         </div>
         <%end %>
     </div>
@@ -102,6 +101,30 @@
                 <p><%= @user.address %></p>
               </div>
             </div>
+            <% if admin_signed_in? %>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Last Access</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= @user.last_sign_in_at %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Role</label>
+              </div>
+              <% if @user.organization_administrator.organization_id.nil? %>
+              <div class="col-md-6">
+                <p>Common User</p>
+              </div>
+                <%else %>
+                <div class="col-md-12">
+                  <p>Organization Administrator of <%=@user.organization_administrator.organization.name %></p>
+                </div>
+                <%end %>
+            </div>
+              <%end %>
           </div>
 
           <div class="tab-pane fade" id="organizations" role="tabpanel" aria-labelledby="organizations-tab">

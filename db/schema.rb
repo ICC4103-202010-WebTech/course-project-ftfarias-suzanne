@@ -163,13 +163,6 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
     t.index ["event_id"], name: "index_start_date_options_on_event_id"
   end
 
-  create_table "system_administrators", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_system_administrators_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "password"
     t.string "name"
@@ -224,7 +217,6 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "event_guests"
   add_foreign_key "start_date_options", "events"
-  add_foreign_key "system_administrators", "users"
   add_foreign_key "users", "organizations"
   add_foreign_key "votes", "event_guests"
   add_foreign_key "votes", "start_date_options"
