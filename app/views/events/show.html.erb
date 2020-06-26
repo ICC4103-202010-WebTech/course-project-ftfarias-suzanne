@@ -31,6 +31,9 @@
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#start_date_poll" role="tab" aria-controls="profile" aria-selected="false">Start Date Poll</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#attachments" role="tab" aria-controls="profile" aria-selected="false">Attachments</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -151,6 +154,67 @@
                   </div>
                   <%end %>
                 <%end %>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="attachments" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row">
+              <div class="card ml-4 mb-3 ">
+                <div class="card-header">
+                  <h3>PDF attachments</h3>
+                </div>
+                <div class="card-body">
+                  <% if @event.pdf.attached? %>
+
+                    <% @event.pdf.each do |pdf| %>
+                      <div class="mb-3">
+                        <%= link_to pdf.blob.filename, url_for(pdf), class: "text-info" %>
+                      </div>
+                    <%end %>
+                  <% else %>
+                    <p class="ml-3">This event doesn't have any pdf attachments yet</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="card ml-4 mb-3 ">
+                <div class="card-header">
+                  <h3>Photo attachments</h3>
+                </div>
+                <div class="card-body">
+                  <% if @event.pictures.attached? %>
+
+                    <% @event.pictures.each do |picture| %>
+                      <div class="mb-3">
+                        <%= link_to image_tag(picture, class: "card-img-top", height: "150px", background: "#55595c", color: "#eceeef")%>
+                      </div>
+                    <%end %>
+                  <% else %>
+                    <p class="ml-3">This event doesn't have any photos attachments yet</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="card ml-4 mb-3 ">
+                <div class="card-header">
+                  <h3>Video attachments</h3>
+                </div>
+                <div class="card-body">
+                  <% if @event.videos.attached? %>
+
+                    <% @event.videos.each do |video| %>
+                      <div class="mb-3">
+                        <%= link_to video.blob.filename, url_for(video), class: "text-info" %>
+                      </div>
+                    <%end %>
+                  <% else %>
+                    <p class="ml-3">This event doesn't have any video attachments yet</p>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

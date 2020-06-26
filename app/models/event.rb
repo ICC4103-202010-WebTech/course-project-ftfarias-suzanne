@@ -11,6 +11,10 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :start_date_options
   has_one_attached :event_picture
 
+  has_many_attached :pdf
+  has_many_attached :pictures
+  has_many_attached :videos
+
 
   validates :name, :location, :description, presence: true
 
