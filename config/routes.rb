@@ -30,7 +30,10 @@ Rails.application.routes.draw do
   resources :messages, defaults: {format: :html}
   resources :aup, default: { format: :html}
   resources :to_s, default: { format: :html}
-
+  resources :reports, default: { format: :html}
+  resources :report_comments, default: { format: :html}
+  resources :report_organizations, default: { format: :html}
+  resources :total_report, default: { format: :html}
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
 end
