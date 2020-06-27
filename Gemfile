@@ -59,3 +59,6 @@ gem 'cancancan'
 
 gem 'dotenv-rails'
 
+gem 'omniauth-google-oauth2'
+
+

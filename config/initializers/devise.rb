@@ -304,6 +304,7 @@ Devise.setup do |config|
   # end
 
   # ==> Configuration for :registerable
+  config.omniauth :google_oauth2, '107581657091-jka9dat329nub9eg85f2tjns4cfecitt.apps.googleusercontent.com', 'cQJ18G0LvrcqWnKomrOPn28p', {}
 
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
