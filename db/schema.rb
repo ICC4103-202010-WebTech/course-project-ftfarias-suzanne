@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_071125) do
+ActiveRecord::Schema.define(version: 2020_06_27_023633) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comment_reports", force: :cascade do |t|
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "comment_id"
+    t.integer "user_id"
+    t.index ["comment_id"], name: "index_comment_reports_on_comment_id"
+    t.index ["user_id"], name: "index_comment_reports_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
@@ -69,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
     t.integer "event_id"
     t.index ["event_id"], name: "index_event_guests_on_event_id"
     t.index ["user_id"], name: "index_event_guests_on_user_id"
+  end
+
+  create_table "event_reports", force: :cascade do |t|
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_event_reports_on_event_id"
+    t.index ["user_id"], name: "index_event_reports_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -125,6 +145,16 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
     t.integer "organization_id"
     t.index ["organization_id"], name: "index_organization_administrators_on_organization_id"
     t.index ["user_id"], name: "index_organization_administrators_on_user_id"
+  end
+
+  create_table "organization_reports", force: :cascade do |t|
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.index ["organization_id"], name: "index_organization_reports_on_organization_id"
+    t.index ["user_id"], name: "index_organization_reports_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -202,11 +232,15 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comment_reports", "comments"
+  add_foreign_key "comment_reports", "users"
   add_foreign_key "comments", "event_guests"
   add_foreign_key "comments", "events"
   add_foreign_key "event_creators", "users"
   add_foreign_key "event_guests", "events"
   add_foreign_key "event_guests", "users"
+  add_foreign_key "event_reports", "events"
+  add_foreign_key "event_reports", "users"
   add_foreign_key "events", "event_creators"
   add_foreign_key "events", "organizations"
   add_foreign_key "invitations", "events"
@@ -216,6 +250,8 @@ ActiveRecord::Schema.define(version: 2020_06_26_071125) do
   add_foreign_key "messages", "users"
   add_foreign_key "organization_administrators", "organizations"
   add_foreign_key "organization_administrators", "users"
+  add_foreign_key "organization_reports", "organizations"
+  add_foreign_key "organization_reports", "users"
   add_foreign_key "organizations", "organization_administrators"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "event_guests"

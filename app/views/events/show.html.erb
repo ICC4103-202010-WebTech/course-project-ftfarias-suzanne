@@ -52,7 +52,7 @@
           </div>
           <% else %>
             <div class="row">
-              <%= link_to 'Report Event', new_report_path(event_id:@event.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%>
+              <%= link_to 'Report Event', new_event_report_path(event_id:@event.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%>
             </div>
           <%end %>
 
@@ -61,7 +61,7 @@
             <%= link_to "Edit Event", edit_event_path , class: "profile-edit-btn mr-1 text-info"%>
           </div>
           <div class="row">
-            <%= link_to 'Delete Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
+            <%= link_to 'Delete Event', event_path(@event.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 text-danger"%>
           </div>
         <% end %>
       </div>
@@ -108,9 +108,13 @@
                             <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(comment) , class: "comment-create mr-1 text-info"%></button>
                             <button class="comment-delete page-background mb-0"><%= link_to 'Delete Comment', comment_path(comment), method: :delete, class: "text-danger",data: { confirm: 'Are you sure?' } %> </button>
                             <%else %>
-                            <button class="comment-delete page-background mb-0"><%= link_to 'Report Comment', new_report_comment_path(comment_id:comment.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%></button>
+                            <button class="comment-delete page-background mb-0"><%= link_to 'Report Comment', new_comment_report_path(comment_id:comment.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%></button>
                             <% end %>
-                          <% end %>
+
+                            <%elsif admin_signed_in? %>
+                            <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(comment) , class: "comment-create mr-1 text-info"%></button>
+                            <button class="comment-delete page-background mb-0"><%= link_to 'Delete Comment', comment_path(comment.id), method: :delete, class: "text-danger",data: { confirm: 'Are you sure?' } %> </button>
+                        <% end %>
                         </div>
                         <% @replies.each do |reply| %>
                           <div class="card card-inner">

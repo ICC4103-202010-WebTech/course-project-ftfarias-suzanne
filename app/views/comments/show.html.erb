@@ -13,6 +13,9 @@
                 <div class="clearfix"></div>
                 <p><%= @comment.message %></p>
               </div>
+              <div>
+                <button class="comment-create page-background mb-0"><%= link_to "Delete Comment", comment_path(comment) , method: :delete,class: "comment-create mr-1 text-danger"%></button>
+              </div>
             </div>
           </div>
         </div>

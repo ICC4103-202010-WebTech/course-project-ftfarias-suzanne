@@ -18,6 +18,9 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.uncountable "ToS"
   inflect.uncountable "tos"
   inflect.acronym 'API'
+  inflect.uncountable "TotalReport"
+  inflect.uncountable "total_report"
+
 end
 
 # These inflection rules are supported but not enabled by default:

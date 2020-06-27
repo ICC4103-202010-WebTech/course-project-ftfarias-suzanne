@@ -48,11 +48,11 @@
           <%= link_to "Edit Organization", edit_organization_path , class: "profile-edit-btn mr-1 text-info"%>
         </div>
         <div class="row">
-          <%= link_to 'Delete Organization', organization_path(@organization), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 pr-0 text-danger"%>
+          <%= link_to 'Delete Organization', organization_path(@organization.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 pr-0 text-danger"%>
         </div>
           <% else %>
             <div class="row">
-              <%= link_to 'Report Organization', new_report_organization_path(organization_id:@organization.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%>
+              <%= link_to 'Report Organization', new_organization_report_path(organization_id:@organization.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%>
             </div>
           <%end %>
         <% elsif admin_signed_in? %>
@@ -60,7 +60,7 @@
               <%= link_to "Edit Organization", edit_organization_path , class: "profile-edit-btn mr-1 text-info"%>
             </div>
             <div class="row">
-              <%= link_to 'Delete Organization', organization_path(@organization), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 pr-0 text-danger"%>
+              <%= link_to 'Delete Organization', organization_path(@organization.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "profile-edit-btn mt-1 pr-0 text-danger"%>
             </div>
         <%end %>
         </div>

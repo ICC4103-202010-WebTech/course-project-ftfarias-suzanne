@@ -1,0 +1,28 @@
+<div class="ml-0 mt-3 text-center">
+  <h2>New Comment Report</h2>
+</div>
+
+<div>
+  <%= form_with model: @comment_report, local: true do |form| %>
+    <%= errors_for @comment_report%>
+    <%= form.hidden_field :comment_id , value: @comment.id%>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+
+    <div class="container emp-profile2">
+      <form method="post">
+        <div  id=profile_row class="row">
+          <div class="col-md-3 mx-auto">
+            <div class="profile-head">
+              <%= form.label :message %>
+              <%= form.text_area :message,class: "form-control"%>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="form-group mt-2 text-center">
+        <%= form.submit "Send Report", class: ["btn", "btn-primary"] %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      </div>
+    </div>
+  <% end %>
+</div>
