@@ -50,7 +50,11 @@
           <div class="row">
             <%= link_to "Invite Guest", new_invitation_path(event_id:@event.id) , class: "profile-edit-btn mr-1 text-success"%>
           </div>
-            <%end %>
+          <% else %>
+            <div class="row">
+              <%= link_to 'Report Event', new_report_path(event_id:@event.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%>
+            </div>
+          <%end %>
 
           <% elsif admin_signed_in?%>
           <div class="row">
@@ -99,8 +103,14 @@
                               <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
                             </p>
                           </div>
-                          <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(comment) , class: "comment-create mr-1 text-info"%></button>
-                          <button class="comment-delete page-background mb-0"><%= link_to 'Delete Comment', comment_path(comment), method: :delete, class: "text-danger",data: { confirm: 'Are you sure?' } %> </button>
+                          <% if user_signed_in? %>
+                            <% if current_user.id==comment.event_guest.user.id %>
+                            <button class="comment-create page-background mb-0"><%= link_to "Edit Comment", edit_comment_path(comment) , class: "comment-create mr-1 text-info"%></button>
+                            <button class="comment-delete page-background mb-0"><%= link_to 'Delete Comment', comment_path(comment), method: :delete, class: "text-danger",data: { confirm: 'Are you sure?' } %> </button>
+                            <%else %>
+                            <button class="comment-delete page-background mb-0"><%= link_to 'Report Comment', new_report_comment_path(comment_id:comment.id), class: "profile-edit-btn mt-1 pr-0 text-danger"%></button>
+                            <% end %>
+                          <% end %>
                         </div>
                         <% @replies.each do |reply| %>
                           <div class="card card-inner">

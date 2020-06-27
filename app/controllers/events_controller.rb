@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
 
   # GET /events
   # GET /events.json
@@ -12,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event_comments= @event.comments
+    @user = User.find(params[:id])
   end
 
   # GET /events/new
