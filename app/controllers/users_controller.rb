@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  def join_org(org_id)
+     @user = current_user
+     @user.update(organization_id:org_id)
+   end
   def index
     @users = User.all
   end

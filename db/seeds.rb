@@ -9,8 +9,8 @@
 #User.create(email:"ftfarias@miuandes.cl",password:"password")
 
 User.create(email:"sizanni@miuandes.cl",password:"123456",name:"Sebastián",lastname:"Zanni",username:"sZanni14",bio:"usuario1",phone:"991220488",address:"Nuestra Sra del Rosario 360")
-User.create(email:"ftfarias@miuandes.cl",password:"password",name:"Francisco",lastname:"Farias",username:"FcoFarias",bio:"usuario2",phone:"997381923",address:"Av el Tranque 12654")
-User.create(email:"jbarrientos@miuandes.cl",password:"password",name:"Joaquin",lastname:"Barrientos",username:"Bayuyo",bio:"usuario3",phone:"99123123",address:"Rio Simme 5019")
+User.create(email:"ftfarias@miuandes.cl",password:"123456",name:"Francisco",lastname:"Farias",username:"FcoFarias",bio:"usuario2",phone:"997381923",address:"Av el Tranque 12654")
+User.create(email:"jbarrientos@miuandes.cl",password:"123456",name:"Joaquin",lastname:"Barrientos",username:"Bayuyo",bio:"usuario3",phone:"99123123",address:"Rio Simme 5019")
 Organization.create(name:"Grupo4",description:"Equipo Web Tech",picture:"a",bannerpicture:"a",membersnumber:"0",organization_administrator_id:1)
 u1 = User.find_by( email:"sizanni@miuandes.cl")
 u2 = User.find_by( email:"ftfarias@miuandes.cl")

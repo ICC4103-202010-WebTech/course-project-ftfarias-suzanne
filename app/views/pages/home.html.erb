@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+  <%if current_user.organization_id.nil? == false%>
 <div class="text-center">
   <h3 class="big_title pb-2">Your Upcoming Events</h3>
   <% @upcoming_events.each do |upcoming_event| %>
@@ -35,8 +36,32 @@
         <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "See organization" , organization%></button>
       </div>
     </div>
-  <% end %>
 </div>
+    <%end %>
+    <%else %>
+
+    <div class="text-center">
+      <h3 class="big_title">Please join to an organization</h3>
+
+      <% @organizations.each do |organization| %>
+        <div class="card mb-4 shadow-sm mx-auto w-50">
+          <div class="card-header">
+            <h3 id="event_org"><%= organization.name %></h3>
+          </div>
+          <% if organization.org_picture.attached? %>
+            <%= link_to image_tag(organization.org_picture, class: "card-img-top", height: "318.75px" ,background: "#55595c", color: "#eceeef"), url_for(organization) %>
+          <% else %>
+            <%=link_to image_tag("thumbnail.svg", class: "card-img-top", background:"#55595c", color: "#eceeef") , url_for(organization)%>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text"><%= organization.description%></p>
+            <p class="card-text"><i class="fas fa-users mr-1 fa-lg"> </i><%= organization.users.count%></p>
+            <button type="button" class="btn btn-sm btn-outline-secondary"> <%=link_to("Join", user_path(current_user, :organization_id => organization.id), :method => :patch) %></button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <%end %>
 
 
   <% elsif admin_signed_in? %>

@@ -4,6 +4,8 @@
     <%= form_with model: @user, local: true do |f| %>
       <%= errors_for @user%>
 
+      <% f.hidden_field :organization_id, value: 1 %>
+
       <div class="form-group">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control"%>

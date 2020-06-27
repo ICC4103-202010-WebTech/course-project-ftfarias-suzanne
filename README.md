@@ -9,7 +9,30 @@ a) rake db:migrate
    rake db:seed
 
 b) rake db:setup
+To create an Admin:
+- rake admin:create_admin_user #This will let you create a password for the admin
+- To log in as an admin, go to localhost:3000/admin/sign_in
+- The email is always admin@teemoevents.com
+
+*******************************************************************************************
+Assignment 4
+
+We've managed to implement all the required features that were asked.
+
+In addition, we implemented a report system for not only events, but for comments and organizations. Reports can be made only by users that are not creators or admin of the content.
+
+Also, we managed to implement Google authentication log in and if the Google account does not have a created account it creates one automatically, but some data of the profile have to be edited afterwards because the Google account does not provide them.
+
+All the existing accounts have password 123456.
+
+For simplicity reasons, all the created users by registration are part of the organization of id=1, but when you create a new user with the sign up it doesnt belongs to an organization. (Must fix)
+
+The homepage for the admin is diferent, as it shows the status of the web page, with the amount of users, organizations and events.
+
+Bugs:
+- For some reason, sometimes when the admin tries to delete a certain user or a certain event the applications throws an error and sometimes it works perfectly fine.
 ******************************************************************************************
+
 Assignment 3
 
 We've managed to implement all the required features that were asked, except for the invitation and a functional voting system.
